@@ -5,11 +5,15 @@ CHECK_CFLAGS := $(shell pkg-config --cflags check 2>/dev/null)
 CHECK_LIBS := $(shell pkg-config --libs check 2>/dev/null)
 SYSTEM_NAME := $(shell uname -s)
 
+ifeq ($(strip $(CHECK_LIBS)),)
+CHECK_LIBS = -lcheck -lm -lsubunit -lrt -pthread
+endif
+
 # все исходники
 SRC = $(wildcard *.c)
 
 # Исходники тестов
-TEST_SRC = $(wildcard tests/*.c)
+TEST_SRC = $(wildcard tests/*.c tests/*.h)
 
 # Превращаем все .c в .o
 OBJ = $(SRC:.c=.o)
