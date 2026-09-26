@@ -1,7 +1,7 @@
 //hours_lost_here = 12
 //я рот ебал нахуй
 
-#include "../include/arlloc.h"
+#include "arlloc.h"
 
 // Ебаные статики по имя инкапсуляции нахуй
 static arena_block_t* arena_block_create(size_t capacity);
