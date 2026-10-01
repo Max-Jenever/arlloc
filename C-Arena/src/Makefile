@@ -69,10 +69,6 @@ cppchk:
 clean:
 	rm -rf *.o *.a *.gcda *.gcno *.info $(TEST_RUNNER) $(GCOV_TEST_RUNNER) \
 	       gcov_report tests/*.o tests/*.gcda tests/*.gcno \
-	       utils/*.o utils/*.gcda utils/*.gcno \
-	       unnecessary/*.o unnecessary/*.gcda unnecessary/*.gcno \
-	       bit/*.o bit/*.gcda bit/*.gcno \
-	       arithmetic/*.o arithmetic/*.gcda arithmetic/*.gcno
 
 .PHONY: all test gcov_report clean cppchk rebuild
 
