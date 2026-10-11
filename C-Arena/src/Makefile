@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -std=c11
+CFLAGS = -Wall -Wextra -Werror -std=c11 -pedantic
 GCOV_FLAGS = -fprofile-arcs -ftest-coverage
 CHECK_CFLAGS := $(shell pkg-config --cflags check 2>/dev/null)
 CHECK_LIBS := $(shell pkg-config --libs check 2>/dev/null)
@@ -21,7 +21,7 @@ TEST_OBJ = $(TEST_SRC:.c=.o)
 GCOV_OBJ = $(SRC:.c=.gcov.o)
 GCOV_TEST_OBJ = $(TEST_SRC:.c=.gcov.o)
 
-TARGET = arlloc.a
+TARGET = ../build/libarlloc.a
 TEST_RUNNER = test_runner
 GCOV_TEST_RUNNER = test_runner_gcov
 
@@ -69,6 +69,7 @@ cppchk:
 clean:
 	rm -rf *.o *.a *.gcda *.gcno *.info $(TEST_RUNNER) $(GCOV_TEST_RUNNER) \
 	       gcov_report tests/*.o tests/*.gcda tests/*.gcno \
+				 ../build/libarlloc.a
 
 .PHONY: all test gcov_report clean cppchk rebuild
 
