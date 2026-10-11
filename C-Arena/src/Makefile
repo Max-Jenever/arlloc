@@ -9,10 +9,8 @@ ifeq ($(strip $(CHECK_LIBS)),)
 CHECK_LIBS = -lcheck -lm -lsubunit -lrt -pthread
 endif
 
-# все исходники
 SRC = $(wildcard *.c)
 
-# Исходники тестов
 TEST_SRC = $(wildcard tests/*.c tests/*.h)
 
 # Превращаем все .c в .o
@@ -21,18 +19,23 @@ TEST_OBJ = $(TEST_SRC:.c=.o)
 GCOV_OBJ = $(SRC:.c=.gcov.o)
 GCOV_TEST_OBJ = $(TEST_SRC:.c=.gcov.o)
 
-TARGET = ../build/libarlloc.a
+# Целевая директория и файлы
+BUILD_DIR = ../build
+TARGET = $(BUILD_DIR)/libarlloc.a
 TEST_RUNNER = test_runner
 GCOV_TEST_RUNNER = test_runner_gcov
 
-# Цель по умолчанию только сборка библиотеки
 all: $(TARGET)
 
 # Пересборка с нуля
 rebuild: clean all
 
-# Сборка статической библиотеки
-$(TARGET): $(OBJ)
+# Гарантируем существование директории сборки
+$(BUILD_DIR):
+	mkdir -p $(BUILD_DIR)
+
+# Сборка статической библиотеки (с зависимостью от существования директории)
+$(TARGET): $(OBJ) | $(BUILD_DIR)
 	ar rcs $@ $^
 	ranlib $@
 
@@ -47,7 +50,7 @@ $(TARGET): $(OBJ)
 test: $(TEST_RUNNER)
 	./$(TEST_RUNNER)
 
-# линкуем тесты с библиотекой
+# Линкуем тесты с библиотекой
 $(TEST_RUNNER): $(TEST_OBJ) $(TARGET)
 	$(CC) $(CFLAGS) $(TEST_OBJ) $(TARGET) -o $@ $(CHECK_LIBS)
 
@@ -69,7 +72,6 @@ cppchk:
 clean:
 	rm -rf *.o *.a *.gcda *.gcno *.info $(TEST_RUNNER) $(GCOV_TEST_RUNNER) \
 	       gcov_report tests/*.o tests/*.gcda tests/*.gcno \
-				 ../build/libarlloc.a
+	       $(BUILD_DIR)/libarlloc.a
 
 .PHONY: all test gcov_report clean cppchk rebuild
-
