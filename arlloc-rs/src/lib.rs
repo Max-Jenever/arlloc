@@ -1,18 +1,19 @@
 use std::ffi::c_void;
 use std::ptr;
 
-pub enum ArenaT {}   // было arena_t — CamelCase
+#[allow(non_camel_case_types)]
+pub enum arena_t {}
 
 // Объявление внешних С-функций
 unsafe extern "C" {
-    fn arena_create(initial_block_size: usize, subsequent_block_size: usize) -> *mut ArenaT;
-    fn arena_destroy(arena: *mut ArenaT);
-    fn arena_alloc(arena: *mut ArenaT, size: usize, align: usize) -> *mut c_void; // + align
-    fn arena_reset(arena: *mut ArenaT);
+    fn arena_create(initial_block_size: usize, subsequent_block_size: usize) -> *mut arena_t;
+    fn arena_destroy(arena: *mut arena_t);
+    fn arena_alloc(arena: *mut arena_t, size: usize, align: usize) -> *mut c_void; // + align
+    fn arena_reset(arena: *mut arena_t);
 }
 
 pub struct Arena {
-    ptr: *mut ArenaT,
+    ptr: *mut arena_t,
 }
 
 impl Arena {
@@ -51,7 +52,6 @@ impl Drop for Arena {
     fn drop(&mut self) {
         if !self.ptr.is_null() {
             unsafe { arena_destroy(self.ptr) };
-            self.ptr = ptr::null_mut();
         }
     }
 }
