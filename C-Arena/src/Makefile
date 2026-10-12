@@ -72,6 +72,6 @@ cppchk:
 clean:
 	rm -rf *.o *.a *.gcda *.gcno *.info $(TEST_RUNNER) $(GCOV_TEST_RUNNER) \
 	       gcov_report tests/*.o tests/*.gcda tests/*.gcno \
-	       $(BUILD_DIR)/libarlloc.a
+	       $(BUILD_DIR)/libarlloc.a ../html
 
 .PHONY: all test gcov_report clean cppchk rebuild

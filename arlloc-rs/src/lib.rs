@@ -4,7 +4,7 @@ use std::ptr;
 #[allow(non_camel_case_types)]
 pub enum arena_t {}
 
-// Объявление внешних С-функций
+#[allow(clippy::missing_safety_doc)]
 unsafe extern "C" {
     fn arena_create(initial_block_size: usize, subsequent_block_size: usize) -> *mut arena_t;
     fn arena_destroy(arena: *mut arena_t);
@@ -12,11 +12,24 @@ unsafe extern "C" {
     fn arena_reset(arena: *mut arena_t);
 }
 
+/// Обертка над C-аллокатором арены.
+///
+/// # Ограничения
+/// Метод `alloc` поддерживает только типы, реализующие типаж `Copy`.
+/// Аллокатор арены не выполняет вызов деструкторов (`Drop`) для размещенных данных.
 pub struct Arena {
     ptr: *mut arena_t,
 }
 
 impl Arena {
+    /// Создает новый экземпляр аллокатора арены.
+    ///
+    /// # Параметры
+    /// * `initial_size` — размер первого блока памяти в байтах (должен быть > 0).
+    /// * `subsequent_size` — размер последующих блоков памяти в байтах (должен быть > 0).
+    ///
+    /// # Возвращаемое значение
+    /// Возвращает `Some(Arena)` при успешном выделении памяти или `None` в случае ошибки (OOM).
     pub fn new(initial_size: usize, subsequent_size: usize) -> Option<Self> {
         let ptr = unsafe { arena_create(initial_size, subsequent_size) };
         if ptr.is_null() {
@@ -25,7 +38,19 @@ impl Arena {
             Some(Self { ptr })
         }
     }
-
+    /// Выделяет память в арене и размещает в ней переданное значение.
+    ///
+    /// # Параметры
+    /// * `value` — значение для размещения. Тип `T` обязан реализовывать типаж `Copy`.
+    ///
+    /// # Возвращаемое значение
+    /// Возвращает `Some(&mut T)` с изменяемой ссылкой на размещенное значение, 
+    /// время жизни которой привязано к времени жизни самой арены (`'a`). 
+    /// Возвращает `None` в случае исчерпания памяти или невалидных параметров.
+    ///
+    /// # Гарантии безопасности
+    /// Функция является безопасной (safe), так как внутренне гарантирует корректное 
+    /// вычисление размера и выравнивания через `std::mem::size_of` и `std::mem::align_of`.
     pub fn alloc<'a, T>(&'a self, value: T) -> Option<&'a mut T> {
         let size = std::mem::size_of::<T>();
         let align = std::mem::align_of::<T>();
@@ -43,12 +68,18 @@ impl Arena {
         }
     }
 
+    /// Сбрасывает арену в начальное состояние.
+    ///
+    /// # Внимание
+    /// Все ссылки, полученные ранее через метод `alloc`, становятся невалидными. 
+    /// Использование таких ссылок после вызова `reset` приведет к неопределенному поведению (Undefined Behavior).
     pub fn reset(&self) {
         unsafe { arena_reset(self.ptr) };
     }
 }
 
 impl Drop for Arena {
+    /// Освобождает все ресурсы, связанные с ареной, при выходе из области видимости.
     fn drop(&mut self) {
         if !self.ptr.is_null() {
             unsafe { arena_destroy(self.ptr) };
