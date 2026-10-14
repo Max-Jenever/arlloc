@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -std=c11 -pedantic
 GCOV_FLAGS = -fprofile-arcs -ftest-coverage
 CHECK_CFLAGS := $(shell pkg-config --cflags check 2>/dev/null)
-CHECK_LIBS := $(shell pkg-config --libs check 2>/dev/null)
+CHECK_LIBS = $(shell pkg-config --libs check 2>/dev/null || echo "-lcheck") -lm -lpthread
 SYSTEM_NAME := $(shell uname -s)
 
 ifeq ($(strip $(CHECK_LIBS)),)
