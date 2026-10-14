@@ -6,7 +6,7 @@ GCOV_FLAGS = -fprofile-arcs -ftest-coverage
 CHECK_CFLAGS := $(shell pkg-config --cflags check 2>/dev/null)
 CHECK_LIBS := $(shell pkg-config --libs check 2>/dev/null)
 
-# Фоллбэк, если pkg-config ничего не нашел (убран -lrt для совместимости с macOS)
+# Фоллбэк, если pkg-config ничего не нашел (без -lrt для совместимости с macOS)
 ifeq ($(strip $(CHECK_LIBS)),)
 CHECK_LIBS = -lcheck -lm -lsubunit -pthread
 endif
@@ -16,7 +16,7 @@ SRC = $(wildcard *.c)
 # Разделяем исходные файлы и заголовки для тестов
 TEST_C_FILES = $(wildcard tests/*.c)
 TEST_HEADERS = $(wildcard tests/*.h)
-TEST_SRC = $(TEST_C_FILES) $(TEST_HEADERS) # Используем это только для cppcheck
+TEST_SRC = $(TEST_C_FILES) $(TEST_HEADERS)
 
 # Превращаем в .o ТОЛЬКО .c файлы
 OBJ = $(SRC:.c=.o)
@@ -24,7 +24,6 @@ TEST_OBJ = $(TEST_C_FILES:.c=.o)
 GCOV_OBJ = $(SRC:.c=.gcov.o)
 GCOV_TEST_OBJ = $(TEST_C_FILES:.c=.gcov.o)
 
-# Целевая директория и файлы
 BUILD_DIR = ../build
 TARGET = $(BUILD_DIR)/libarlloc.a
 TEST_RUNNER = test_runner
@@ -41,21 +40,27 @@ $(TARGET): $(OBJ) | $(BUILD_DIR)
 	ar rcs $@ $^
 	ranlib $@
 
-# Компиляция основных файлов библиотеки
+# 1. Компиляция основных файлов библиотеки (в текущей директории)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Компиляция тестовых файлов с флагами для check.h и macOS/Ubuntu
-%.o: tests/%.c
+# 2. Компиляция тестовых файлов (строго в директории tests/)
+# ИСПРАВЛЕНО: корректный шаблон tests/%.o: tests/%.c гарантирует применение CHECK_CFLAGS
+tests/%.o: tests/%.c
 	$(CC) $(CFLAGS) $(CHECK_CFLAGS) -Wno-gnu-zero-variadic-macro-arguments -Wno-variadic-macros -Wno-unknown-warning-option -c $< -o $@
 
+# 3. Компиляция основных файлов для gcov
 %.gcov.o: %.c
+	$(CC) $(CFLAGS) $(CHECK_CFLAGS) -Wno-gnu-zero-variadic-macro-arguments -Wno-variadic-macros -Wno-unknown-warning-option $(GCOV_FLAGS) -c $< -o $@
+
+# 4. Компиляция тестовых файлов для gcov
+tests/%.gcov.o: tests/%.c
 	$(CC) $(CFLAGS) $(CHECK_CFLAGS) -Wno-gnu-zero-variadic-macro-arguments -Wno-variadic-macros -Wno-unknown-warning-option $(GCOV_FLAGS) -c $< -o $@
 
 test: $(TEST_RUNNER)
 	./$(TEST_RUNNER)
 
-# Линкуем тесты с библиотекой (теперь здесь только .o файлы, никаких .h)
+# Линковка тестов (теперь здесь только .o файлы, никаких .h)
 $(TEST_RUNNER): $(TEST_OBJ) $(TARGET)
 	$(CC) $(CFLAGS) $(TEST_OBJ) $(TARGET) -o $@ $(CHECK_LIBS)
 
