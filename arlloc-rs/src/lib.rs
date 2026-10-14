@@ -44,14 +44,14 @@ impl Arena {
     /// * `value` — значение для размещения. Тип `T` обязан реализовывать типаж `Copy`.
     ///
     /// # Возвращаемое значение
-    /// Возвращает `Some(&mut T)` с изменяемой ссылкой на размещенное значение, 
-    /// время жизни которой привязано к времени жизни самой арены (`'a`). 
+    /// Возвращает `Some(&mut T)` с изменяемой ссылкой на размещенное значение,
+    /// время жизни которой привязано к времени жизни самой арены (`'a`).
     /// Возвращает `None` в случае исчерпания памяти или невалидных параметров.
     ///
     /// # Гарантии безопасности
-    /// Функция является безопасной (safe), так как внутренне гарантирует корректное 
+    /// Функция является безопасной (safe), так как внутренне гарантирует корректное
     /// вычисление размера и выравнивания через `std::mem::size_of` и `std::mem::align_of`.
-    pub fn alloc<'a, T>(&'a self, value: T) -> Option<&'a mut T> {
+    pub fn alloc<T>(&self, value: T) -> Option<&T> {
         let size = std::mem::size_of::<T>();
         let align = std::mem::align_of::<T>();
 
@@ -64,14 +64,14 @@ impl Arena {
         unsafe {
             let typed_ptr = raw_ptr as *mut T;
             ptr::write(typed_ptr, value);
-            Some(&mut *typed_ptr)
+            Some(&*typed_ptr)
         }
     }
 
     /// Сбрасывает арену в начальное состояние.
     ///
     /// # Внимание
-    /// Все ссылки, полученные ранее через метод `alloc`, становятся невалидными. 
+    /// Все ссылки, полученные ранее через метод `alloc`, становятся невалидными.
     /// Использование таких ссылок после вызова `reset` приведет к неопределенному поведению (Undefined Behavior).
     pub fn reset(&self) {
         unsafe { arena_reset(self.ptr) };
@@ -103,9 +103,14 @@ mod tests {
         assert_eq!(*val, 42);
 
         #[derive(Debug, PartialEq)]
-        struct Point { x: f64, y: f64 }
+        struct Point {
+            x: f64,
+            y: f64,
+        }
 
-        let point = arena.alloc(Point { x: 1.0, y: 1.0 }).expect("Failed to alloc point");
+        let point = arena
+            .alloc(Point { x: 1.0, y: 1.0 })
+            .expect("Failed to alloc point");
         assert_eq!(*point, Point { x: 1.0, y: 1.0 });
     }
 
