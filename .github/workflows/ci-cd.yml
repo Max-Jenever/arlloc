@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install C dependencies
-        run: sudo apt-get update && sudo apt-get install -y cppcheck
+        run: sudo apt-get update && sudo apt-get install -y cppcheck check
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
@@ -28,7 +28,7 @@ jobs:
           components: rustfmt, clippy
 
       - name: Run C static analysis
-        run: make cppchk
+        run: make  -C C-Arena/src cppchk
 
       - name: Run Rust static analysis
         run: |
@@ -52,11 +52,11 @@ jobs:
 
       - name: Install C dependencies (Ubuntu)
         if: matrix.os == 'ubuntu-latest'
-        run: sudo apt-get update && sudo apt-get install -y lcov clang libclang-dev
+        run: sudo apt-get update && sudo apt-get install -y lcov clang libclang-dev check
 
       - name: Install C dependencies (macOS)
         if: matrix.os == 'macos-latest'
-        run: brew install lcov llvm
+        run: brew install lcov llvm check
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
