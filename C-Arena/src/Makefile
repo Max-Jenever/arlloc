@@ -2,24 +2,27 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -std=c11 -pedantic
 GCOV_FLAGS = -fprofile-arcs -ftest-coverage
 
-# 1. Получаем пути к заголовкам и библиотекам check
+# Получаем пути к заголовкам и библиотекам check
 CHECK_CFLAGS := $(shell pkg-config --cflags check 2>/dev/null)
 CHECK_LIBS := $(shell pkg-config --libs check 2>/dev/null)
-SYSTEM_NAME := $(shell uname -s)
 
-# 2. Фоллбэк, если pkg-config ничего не нашел (убран -lrt, так как его нет в macOS)
+# Фоллбэк, если pkg-config ничего не нашел (убран -lrt для совместимости с macOS)
 ifeq ($(strip $(CHECK_LIBS)),)
 CHECK_LIBS = -lcheck -lm -lsubunit -pthread
 endif
 
 SRC = $(wildcard *.c)
-TEST_SRC = $(wildcard tests/*.c tests/*.h)
 
-# Превращаем все .c в .o
+# Разделяем исходные файлы и заголовки для тестов
+TEST_C_FILES = $(wildcard tests/*.c)
+TEST_HEADERS = $(wildcard tests/*.h)
+TEST_SRC = $(TEST_C_FILES) $(TEST_HEADERS) # Используем это только для cppcheck
+
+# Превращаем в .o ТОЛЬКО .c файлы
 OBJ = $(SRC:.c=.o)
-TEST_OBJ = $(TEST_SRC:.c=.o)
+TEST_OBJ = $(TEST_C_FILES:.c=.o)
 GCOV_OBJ = $(SRC:.c=.gcov.o)
-GCOV_TEST_OBJ = $(TEST_SRC:.c=.gcov.o)
+GCOV_TEST_OBJ = $(TEST_C_FILES:.c=.gcov.o)
 
 # Целевая директория и файлы
 BUILD_DIR = ../build
@@ -38,9 +41,12 @@ $(TARGET): $(OBJ) | $(BUILD_DIR)
 	ar rcs $@ $^
 	ranlib $@
 
-# 3. ИЗМЕНЕНИЕ: Добавлены $(CHECK_CFLAGS) и подавление специфичных предупреждений от check.h
-# Это позволяет компилировать тесты на macOS (Clang) и Ubuntu (GCC) с флагом -Werror
+# Компиляция основных файлов библиотеки
 %.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Компиляция тестовых файлов с флагами для check.h и macOS/Ubuntu
+%.o: tests/%.c
 	$(CC) $(CFLAGS) $(CHECK_CFLAGS) -Wno-gnu-zero-variadic-macro-arguments -Wno-variadic-macros -Wno-unknown-warning-option -c $< -o $@
 
 %.gcov.o: %.c
@@ -49,6 +55,7 @@ $(TARGET): $(OBJ) | $(BUILD_DIR)
 test: $(TEST_RUNNER)
 	./$(TEST_RUNNER)
 
+# Линкуем тесты с библиотекой (теперь здесь только .o файлы, никаких .h)
 $(TEST_RUNNER): $(TEST_OBJ) $(TARGET)
 	$(CC) $(CFLAGS) $(TEST_OBJ) $(TARGET) -o $@ $(CHECK_LIBS)
 
