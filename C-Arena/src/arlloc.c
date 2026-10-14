@@ -1,12 +1,27 @@
-//hours_lost_here = 12
-//я рот ебал нахуй
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
 
-#include "../include/arlloc.h"
+#include "arlloc.h"
 
-// Ебаные статики по имя инкапсуляции нахуй
+// Внутренняя структура блока памяти. Не экспортируется в заголовочный файл.
+typedef struct arena_block_t {
+    struct arena_block_t* next; // Указатель на следующий блок в связном списке
+    size_t capacity;            // Общий размер блока data в байтах
+    size_t used;                // Текущее смещение (offset) от начала data
+    uint8_t* data;              // Указатель на фактически выделенную память для данных
+} arena_block_t;
+
+// Внутренняя структура самого аллокатора.
+struct arena_t {
+    arena_block_t* current_block;   // Блок, в котором в данный момент происходит выделение
+    arena_block_t* first_block;     // Первый (initial) блок, сохраняется для arena_reset
+    size_t subsequent_block_size;   // Размер всех последующих блоков при переполнении
+};
+
 static arena_block_t* arena_block_create(size_t capacity);
 static void arena_block_destroy(arena_block_t* block);
-static int is_power_of_two(size_t n);
+static bool is_power_of_two(size_t n);
 
 arena_t* arena_create(size_t initial_block_size, size_t subsequent_block_size) {
 
@@ -170,9 +185,9 @@ void arena_get_stats(const arena_t* arena, arena_stats_t* stats) {
     stats->block_count = block_count;
 }
 
-//=========================================================
-//++++++++++++++Ебучие статики+++++++++++++++++++++++++++++
-//=========================================================
+//========================================================================
+//Внутренние вспомогательные функции, скрытые для обеспечения инкапсуляции
+//========================================================================
 
 // Выделение и инициализация нового блока памяти заданного размера.
 static arena_block_t* arena_block_create(size_t capacity) {
@@ -182,7 +197,7 @@ static arena_block_t* arena_block_create(size_t capacity) {
 
     arena_block_t* block = (arena_block_t*)malloc(sizeof(arena_block_t));
     if (block == NULL) {
-        return NULL; // Ошибка выделения памяти под структуру управления
+        return NULL;
     }
 
     // Выделяем память под сами данные. 
@@ -214,6 +229,6 @@ static void arena_block_destroy(arena_block_t* block) {
 }
 
 // Проверка, является ли число степенью двойки
-static int is_power_of_two(size_t n) {
+static bool is_power_of_two(size_t n) {
     return (n != 0) && ((n & (n - 1)) == 0);
 }

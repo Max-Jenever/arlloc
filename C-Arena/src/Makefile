@@ -1,15 +1,17 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -std=c11
+CFLAGS = -Wall -Wextra -Werror -std=c11 -pedantic
 GCOV_FLAGS = -fprofile-arcs -ftest-coverage
 CHECK_CFLAGS := $(shell pkg-config --cflags check 2>/dev/null)
 CHECK_LIBS := $(shell pkg-config --libs check 2>/dev/null)
 SYSTEM_NAME := $(shell uname -s)
 
-# все исходники
+ifeq ($(strip $(CHECK_LIBS)),)
+CHECK_LIBS = -lcheck -lm -lsubunit -lrt -pthread
+endif
+
 SRC = $(wildcard *.c)
 
-# Исходники тестов
-TEST_SRC = $(wildcard tests/*.c)
+TEST_SRC = $(wildcard tests/*.c tests/*.h)
 
 # Превращаем все .c в .o
 OBJ = $(SRC:.c=.o)
@@ -17,18 +19,23 @@ TEST_OBJ = $(TEST_SRC:.c=.o)
 GCOV_OBJ = $(SRC:.c=.gcov.o)
 GCOV_TEST_OBJ = $(TEST_SRC:.c=.gcov.o)
 
-TARGET = arlloc.a
+# Целевая директория и файлы
+BUILD_DIR = ../build
+TARGET = $(BUILD_DIR)/libarlloc.a
 TEST_RUNNER = test_runner
 GCOV_TEST_RUNNER = test_runner_gcov
 
-# Цель по умолчанию только сборка библиотеки
 all: $(TARGET)
 
 # Пересборка с нуля
 rebuild: clean all
 
-# Сборка статической библиотеки
-$(TARGET): $(OBJ)
+# Гарантируем существование директории сборки
+$(BUILD_DIR):
+	mkdir -p $(BUILD_DIR)
+
+# Сборка статической библиотеки (с зависимостью от существования директории)
+$(TARGET): $(OBJ) | $(BUILD_DIR)
 	ar rcs $@ $^
 	ranlib $@
 
@@ -43,7 +50,7 @@ $(TARGET): $(OBJ)
 test: $(TEST_RUNNER)
 	./$(TEST_RUNNER)
 
-# линкуем тесты с библиотекой
+# Линкуем тесты с библиотекой
 $(TEST_RUNNER): $(TEST_OBJ) $(TARGET)
 	$(CC) $(CFLAGS) $(TEST_OBJ) $(TARGET) -o $@ $(CHECK_LIBS)
 
@@ -65,10 +72,6 @@ cppchk:
 clean:
 	rm -rf *.o *.a *.gcda *.gcno *.info $(TEST_RUNNER) $(GCOV_TEST_RUNNER) \
 	       gcov_report tests/*.o tests/*.gcda tests/*.gcno \
-	       utils/*.o utils/*.gcda utils/*.gcno \
-	       unnecessary/*.o unnecessary/*.gcda unnecessary/*.gcno \
-	       bit/*.o bit/*.gcda bit/*.gcno \
-	       arithmetic/*.o arithmetic/*.gcda arithmetic/*.gcno
+	       $(BUILD_DIR)/libarlloc.a ../html
 
 .PHONY: all test gcov_report clean cppchk rebuild
-
