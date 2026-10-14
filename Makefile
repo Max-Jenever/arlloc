@@ -63,7 +63,7 @@ docs-c: $(DOCS_DIR)/c
 	@echo "[DOCS] Generating C documentation..."
 	@cd C-Arena && doxygen Doxyfile
 	@mkdir -p $(DOCS_DIR)/c
-	@cp -r $(C_DIR)/html/* $(DOCS_DIR)/c/ 2>/dev/null || true
+	@cp -r C-Arena/html/* $(DOCS_DIR)/c/
 	@echo "[DOCS] C documentation completed."
 
 docs-rs: $(DOCS_DIR)/rust
