@@ -1,21 +1,25 @@
 CC = gcc
-
-CHECK_CFLAGS = $(shell pkg-config --cflags check 2>/dev/null)
-CHECK_LIBS = $(shell pkg-config --libs check 2>/dev/null || echo "-lcheck") -lm -lpthread
-
-CFLAGS = -Wall -Wextra -Werror -std=c11 -pedantic $(CHECK_CFLAGS)
-
-# Флаги для тестов: добавляем подавление предупреждений от заголовков библиотеки check
-# -Wno-gnu-zero-variadic-macro-arguments: для Clang (macOS)
-# -Wno-variadic-macros: для GCC (Ubuntu)
-# -Wno-unknown-warning-option: защита от ошибок на неизвестные флаги подавления
-TEST_CFLAGS = $(CFLAGS) -Wno-gnu-zero-variadic-macro-arguments -Wno-variadic-macros -Wno-unknown-warning-option
-
+CFLAGS = -Wall -Wextra -Werror -std=c11 -pedantic
 GCOV_FLAGS = -fprofile-arcs -ftest-coverage
+CHECK_CFLAGS := $(shell pkg-config --cflags check 2>/dev/null)
+CHECK_LIBS := $(shell pkg-config --libs check 2>/dev/null)
+SYSTEM_NAME := $(shell uname -s)
+
+ifeq ($(strip $(CHECK_LIBS)),)
+CHECK_LIBS = -lcheck -lm -lsubunit -lrt -pthread
+endif
 
 SRC = $(wildcard *.c)
+
 TEST_SRC = $(wildcard tests/*.c tests/*.h)
 
+# Превращаем все .c в .o
+OBJ = $(SRC:.c=.o)
+TEST_OBJ = $(TEST_SRC:.c=.o)
+GCOV_OBJ = $(SRC:.c=.gcov.o)
+GCOV_TEST_OBJ = $(TEST_SRC:.c=.gcov.o)
+
+# Целевая директория и файлы
 BUILD_DIR = ../build
 TARGET = $(BUILD_DIR)/libarlloc.a
 TEST_RUNNER = test_runner
@@ -23,23 +27,26 @@ GCOV_TEST_RUNNER = test_runner_gcov
 
 all: $(TARGET)
 
+# Пересборка с нуля
 rebuild: clean all
 
+# Гарантируем существование директории сборки
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
+# Сборка статической библиотеки (с зависимостью от существования директории)
 $(TARGET): $(OBJ) | $(BUILD_DIR)
 	ar rcs $@ $^
 	ranlib $@
 
-# Компиляция основных файлов библиотеки (строгий режим)
+# Правило для компиляции .c в .o
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Компиляция тестовых файлов (с подавлением предупреждений от check.h)
-tests/%.o: tests/%.c
-	$(CC) $(TEST_CFLAGS) -c $< -o $@
+%.gcov.o: %.c
+	$(CC) $(CFLAGS) $(GCOV_FLAGS) -c $< -o $@
 
+# Запуск тестов
 test: $(TEST_RUNNER)
 	./$(TEST_RUNNER)
 
