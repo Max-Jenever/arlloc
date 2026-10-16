@@ -1,4 +1,4 @@
-use arlloc_rs::Arena;
+use arlloc::Arena;
 use bumpalo::Bump;
 use criterion::{Criterion, black_box, criterion_group, criterion_main};
 
