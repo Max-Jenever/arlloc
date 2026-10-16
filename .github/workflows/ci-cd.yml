@@ -113,8 +113,9 @@ jobs:
 
       - name: Generate C Documentation
         run: |
-          mkdir -p docs/c
-          doxygen arlloc-rs/c-src/Doxyfile
+          mkdir -p docs/c 
+          cd arlloc-rs/c-src
+          doxygen -s "OUTPUT_DIRECTORY=$(cd ../.. && pwd)/docs/c" Doxyfile
 
       - name: Generate Rust Documentation
         run: |
