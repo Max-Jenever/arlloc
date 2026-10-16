@@ -37,7 +37,7 @@ jobs:
   # ---------------------------------------------------------------------------
   # ЗАДАЧА 2: Сборка и тестирование (Ubuntu + macOS)
   # ---------------------------------------------------------------------------
-  build-and-test:
+    build-and-test:
     name: Build and Test (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
@@ -49,11 +49,11 @@ jobs:
 
       - name: Install C dependencies (Ubuntu)
         if: matrix.os == 'ubuntu-latest'
-        run: sudo apt-get update && sudo apt-get install -y clang libclang-dev
+        run: sudo apt-get update && sudo apt-get install -y clang libclang-dev check
 
       - name: Install C dependencies (macOS)
         if: matrix.os == 'macos-latest'
-        run: brew install llvm
+        run: brew install llvm check
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
@@ -70,7 +70,6 @@ jobs:
         run: |
           cd arlloc-rs
           cargo test
-
   # ---------------------------------------------------------------------------
   # ЗАДАЧА 3: Проверка компиляции бенчмарков
   # ---------------------------------------------------------------------------
