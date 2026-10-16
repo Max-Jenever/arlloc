@@ -91,3 +91,45 @@ jobs:
         run: |
           cd arlloc-rs
           cargo bench --no-run
+  # ---------------------------------------------------------------------------
+  # ЗАДАЧА 4: Генерация и деплой документации на GitHub Pages
+  # ---------------------------------------------------------------------------
+  deploy-docs:
+    name: Deploy Documentation
+    runs-on: ubuntu-latest
+    needs: [lint, build-and-test] # Ждем успешного прохождения тестов
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    permissions:
+      contents: write # Разрешение на запись в репозиторий (для gh-pages)
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Doxygen and Graphviz
+        run: sudo apt-get update && sudo apt-get install -y doxygen graphviz
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Generate C Documentation
+        run: |
+          mkdir -p docs/c
+          doxygen arlloc-rs/c-src/Doxyfile
+
+      - name: Generate Rust Documentation
+        run: |
+          cd arlloc-rs
+          # Генерируем документацию без зависимостей для скорости
+          cargo doc --no-deps
+          # Копируем результат в общую директорию docs/rust
+          mkdir -p ../docs/rust
+          cp -r target/doc/* ../docs/rust/
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          force_orphan: true # Очищает историю ветки gh-pages, оставляя только актуальные файлы
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'

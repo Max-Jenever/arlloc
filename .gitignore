@@ -22,3 +22,5 @@ arlloc-rs/target/
 *.log
 *.tmp
 *.bak
+docs/c/
+docs/rust/
