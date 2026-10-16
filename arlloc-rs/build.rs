@@ -14,7 +14,6 @@ fn main() {
     build.flag_if_supported("-Wextra");
     build.flag_if_supported("-Wpedantic");
 
-
     // 6. Компилируем код в статическую библиотеку с именем "arlloc".
     // Крейт cc автоматически создаст libarlloc.a (Unix) или arlloc.lib (Windows)
     // и передаст Cargo необходимые инструкции для линковки (rustc-link-lib и rustc-link-search).
