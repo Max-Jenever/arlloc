@@ -19,7 +19,7 @@ TEST_OBJ = $(TEST_C_FILES:.c=.o)
 GCOV_OBJ = $(SRC:.c=.gcov.o)
 GCOV_TEST_OBJ = $(TEST_C_FILES:.c=.gcov.o)
 
-BUILD_DIR = ../build
+BUILD_DIR = build
 TARGET = $(BUILD_DIR)/libarlloc.a
 TEST_RUNNER = test_runner
 GCOV_TEST_RUNNER = test_runner_gcov
