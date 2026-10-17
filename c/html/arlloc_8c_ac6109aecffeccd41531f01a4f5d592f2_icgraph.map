@@ -1,0 +1,17 @@
+<map id="arena_get_stats" name="arena_get_stats">
+<area shape="rect" id="Node000001" title="Заполняет предоставленную структуру статистикой текущего состояния арены." alt="" coords="155,153,281,179"/>
+<area shape="rect" id="Node000002" href="$test__alloc_8c.html#afcf4fca7c6753e81ec01513d57106bb1" title=" " alt="" coords="5,5,107,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,144,158,95,105,44,87,33,90,28,108,40,162,91,202,140"/>
+<area shape="rect" id="Node000003" href="$test__reset_8c.html#aef86d3227470cddf93091d0c7b7d1792" title=" " alt="" coords="5,55,107,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="187,148,105,94,84,82,87,78,108,89,190,143"/>
+<area shape="rect" id="Node000004" href="$test__reset_8c.html#a7825cea1e7298f1133d5182f2ffd4d61" title=" " alt="" coords="5,104,107,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="162,152,98,132,100,127,163,147"/>
+<area shape="rect" id="Node000005" href="$test__stats_8c.html#a4acac9114266f375c4168670f0b2465e" title=" " alt="" coords="5,153,107,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="141,169,107,169,107,163,141,163"/>
+<area shape="rect" id="Node000006" href="$test__stats_8c.html#a9892ccb9cfa0c8aef019b4e8364b512b" title=" " alt="" coords="5,203,107,228"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="163,185,100,205,98,200,162,180"/>
+<area shape="rect" id="Node000007" href="$test__stats_8c.html#a75f65a60c63aa64d5a4081fc971ea3f9" title=" " alt="" coords="5,252,107,277"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="189,189,108,242,85,254,82,249,105,237,186,184"/>
+<area shape="rect" id="Node000008" href="$test__stats_8c.html#ac569662ca23c10fe9b5a7955e68708ad" title=" " alt="" coords="5,301,107,327"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="202,192,162,240,108,291,88,303,85,299,105,287,158,236,197,188"/>
+</map>

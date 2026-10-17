@@ -1,0 +1,492 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>arlloc: Файл arlloc-rs/c-src/arlloc.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">arlloc<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_a29848cc5405417993f8fbcfa25a49eb.html">arlloc-rs</a></li><li class="navelem"><a class="el" href="dir_72d4dba9fa23b036552b25aac525ab60.html">c-src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Классы</a> &#124;
+<a href="#typedef-members">Определения типов</a> &#124;
+<a href="#func-members">Функции</a>  </div>
+  <div class="headertitle"><div class="title">Файл arlloc.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="arlloc_8h_source.html">arlloc.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Граф включаемых заголовочных файлов для arlloc.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="arlloc_8c__incl.png" border="0" usemap="#aarlloc-rs_2c-src_2arlloc_8c" alt=""/></div>
+<map name="aarlloc-rs_2c-src_2arlloc_8c" id="aarlloc-rs_2c-src_2arlloc_8c">
+<area shape="rect" title=" " alt="" coords="107,5,269,31"/>
+<area shape="rect" title=" " alt="" coords="5,79,72,104"/>
+<area shape="poly" title=" " alt="" coords="165,33,77,75,74,70,163,28"/>
+<area shape="rect" title=" " alt="" coords="96,79,179,104"/>
+<area shape="poly" title=" " alt="" coords="182,33,156,69,151,66,177,29"/>
+<area shape="rect" title=" " alt="" coords="203,79,274,104"/>
+<area shape="poly" title=" " alt="" coords="199,29,225,66,220,69,194,33"/>
+<area shape="rect" href="arlloc_8h.html" title=" " alt="" coords="298,79,369,104"/>
+<area shape="poly" title=" " alt="" coords="213,28,299,70,296,75,210,33"/>
+<area shape="rect" title=" " alt="" coords="247,152,321,177"/>
+<area shape="poly" title=" " alt="" coords="327,106,302,142,298,139,323,103"/>
+<area shape="rect" title=" " alt="" coords="346,152,417,177"/>
+<area shape="poly" title=" " alt="" coords="343,103,368,139,364,142,339,106"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Классы</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structarena__block__t.html">arena_block_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structarena__t.html">arena_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Определения типов</h2></td></tr>
+<tr class="memitem:abbc1bb343d9ffb0947ec63e4b91f985b" id="r_abbc1bb343d9ffb0947ec63e4b91f985b"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structarena__block__t.html">arena_block_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arlloc_8c.html#abbc1bb343d9ffb0947ec63e4b91f985b">arena_block_t</a></td></tr>
+<tr class="separator:abbc1bb343d9ffb0947ec63e4b91f985b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:aae7764f15f994ef3c27d4a8dd3c0b679" id="r_aae7764f15f994ef3c27d4a8dd3c0b679"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structarena__t.html">arena_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arlloc_8c.html#aae7764f15f994ef3c27d4a8dd3c0b679">arena_create</a> (size_t initial_block_size, size_t subsequent_block_size)</td></tr>
+<tr class="memdesc:aae7764f15f994ef3c27d4a8dd3c0b679"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализирует аллокатор арены и выделяет первый блок памяти.  <br /></td></tr>
+<tr class="separator:aae7764f15f994ef3c27d4a8dd3c0b679"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bdc08ab0e9af64fab2c5c0557b1c1c3" id="r_a3bdc08ab0e9af64fab2c5c0557b1c1c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arlloc_8c.html#a3bdc08ab0e9af64fab2c5c0557b1c1c3">arena_destroy</a> (<a class="el" href="structarena__t.html">arena_t</a> *arena)</td></tr>
+<tr class="memdesc:a3bdc08ab0e9af64fab2c5c0557b1c1c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Полностью освобождает все ресурсы, связанные с ареной, возвращая память операционной системе.  <br /></td></tr>
+<tr class="separator:a3bdc08ab0e9af64fab2c5c0557b1c1c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ba5a669cbefda51ef3a78208d0b764b" id="r_a8ba5a669cbefda51ef3a78208d0b764b"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arlloc_8c.html#a8ba5a669cbefda51ef3a78208d0b764b">arena_alloc</a> (<a class="el" href="structarena__t.html">arena_t</a> *arena, size_t size, size_t alignment)</td></tr>
+<tr class="memdesc:a8ba5a669cbefda51ef3a78208d0b764b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выделяет непрерывный блок памяти внутри арены.  <br /></td></tr>
+<tr class="separator:a8ba5a669cbefda51ef3a78208d0b764b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee2cd64727614f5bb08796a43b8b1359" id="r_aee2cd64727614f5bb08796a43b8b1359"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arlloc_8c.html#aee2cd64727614f5bb08796a43b8b1359">arena_reset</a> (<a class="el" href="structarena__t.html">arena_t</a> *arena)</td></tr>
+<tr class="memdesc:aee2cd64727614f5bb08796a43b8b1359"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сбрасывает арену в начальное состояние для повторного использования без возврата памяти ОС.  <br /></td></tr>
+<tr class="separator:aee2cd64727614f5bb08796a43b8b1359"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6109aecffeccd41531f01a4f5d592f2" id="r_ac6109aecffeccd41531f01a4f5d592f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arlloc_8c.html#ac6109aecffeccd41531f01a4f5d592f2">arena_get_stats</a> (const <a class="el" href="structarena__t.html">arena_t</a> *arena, <a class="el" href="structarena__stats__t.html">arena_stats_t</a> *stats)</td></tr>
+<tr class="memdesc:ac6109aecffeccd41531f01a4f5d592f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Заполняет предоставленную структуру статистикой текущего состояния арены.  <br /></td></tr>
+<tr class="separator:ac6109aecffeccd41531f01a4f5d592f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Типы</h2>
+<a id="abbc1bb343d9ffb0947ec63e4b91f985b" name="abbc1bb343d9ffb0947ec63e4b91f985b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbc1bb343d9ffb0947ec63e4b91f985b">&#9670;&#160;</a></span>arena_block_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structarena__block__t.html">arena_block_t</a> <a class="el" href="structarena__block__t.html">arena_block_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Функции</h2>
+<a id="a8ba5a669cbefda51ef3a78208d0b764b" name="a8ba5a669cbefda51ef3a78208d0b764b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ba5a669cbefda51ef3a78208d0b764b">&#9670;&#160;</a></span>arena_alloc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * arena_alloc </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structarena__t.html">arena_t</a> *&#160;</td>
+          <td class="paramname"><em>arena</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>alignment</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Выделяет непрерывный блок памяти внутри арены. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arena</td><td>Указатель на аллокатор. Не должен быть NULL. </td></tr>
+    <tr><td class="paramname">size</td><td>Размер выделяемой памяти в байтах. При size == 0 возвращает NULL. </td></tr>
+    <tr><td class="paramname">alignment</td><td>Требуемое выравнивание адреса в байтах. Обязано быть степенью двойки (1, 2, 4, 8, 16, ...). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Указатель на выделенную память, адрес которого кратен alignment, или NULL при ошибке (OOM, невалидное выравнивание, size == 0). </dd></dl>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="arlloc_8c_a8ba5a669cbefda51ef3a78208d0b764b_icgraph.png" border="0" usemap="#aarlloc_8c_a8ba5a669cbefda51ef3a78208d0b764b_icgraph" alt=""/></div>
+<map name="aarlloc_8c_a8ba5a669cbefda51ef3a78208d0b764b_icgraph" id="aarlloc_8c_a8ba5a669cbefda51ef3a78208d0b764b_icgraph">
+<area shape="rect" title="Выделяет непрерывный блок памяти внутри арены." alt="" coords="155,301,252,327"/>
+<area shape="rect" href="test__alloc_8c.html#a3a009dd0a27f6b7c8f81085e3c175f15" title=" " alt="" coords="5,5,107,31"/>
+<area shape="poly" title=" " alt="" coords="197,288,189,238,172,173,145,105,127,73,105,44,91,33,94,29,109,40,131,70,150,103,178,172,194,237,202,287"/>
+<area shape="rect" href="test__alloc_8c.html#a022f4cd9b9ffc33d0a73733668dc700c" title=" " alt="" coords="5,55,107,80"/>
+<area shape="poly" title=" " alt="" coords="194,288,184,247,166,195,140,141,105,93,90,82,93,78,109,89,145,139,171,193,189,245,200,287"/>
+<area shape="rect" href="test__alloc_8c.html#ac697a575c335dc498d65c83bca3fe415" title=" " alt="" coords="5,104,107,129"/>
+<area shape="poly" title=" " alt="" coords="191,289,159,218,135,178,105,143,89,132,93,127,108,139,139,175,164,215,196,287"/>
+<area shape="rect" href="test__alloc_8c.html#a9ccf1a295f0e960f852aff619a6ae908" title=" " alt="" coords="5,153,107,179"/>
+<area shape="poly" title=" " alt="" coords="186,291,152,242,130,216,105,192,88,181,91,177,108,188,134,212,156,239,190,288"/>
+<area shape="rect" href="test__alloc_8c.html#a7622062ac1ac15dcc583b5094aa0d14a" title=" " alt="" coords="5,203,107,228"/>
+<area shape="poly" title=" " alt="" coords="175,294,105,242,85,230,87,226,108,237,178,290"/>
+<area shape="rect" href="test__alloc_8c.html#afcf4fca7c6753e81ec01513d57106bb1" title=" " alt="" coords="5,252,107,277"/>
+<area shape="poly" title=" " alt="" coords="151,299,94,280,96,275,153,294"/>
+<area shape="rect" href="test__alloc_8c.html#a386ee74889c672a324f2c9951e48d65c" title=" " alt="" coords="5,301,107,327"/>
+<area shape="poly" title=" " alt="" coords="141,317,107,317,107,311,141,311"/>
+<area shape="rect" href="test__alloc_8c.html#adc8046441ab0ec583b47d51dde97522e" title=" " alt="" coords="5,351,107,376"/>
+<area shape="poly" title=" " alt="" coords="153,334,96,353,94,348,151,329"/>
+<area shape="rect" href="test__reset_8c.html#aef86d3227470cddf93091d0c7b7d1792" title=" " alt="" coords="5,400,107,425"/>
+<area shape="poly" title=" " alt="" coords="178,338,108,390,86,402,83,398,105,385,175,333"/>
+<area shape="rect" href="test__reset_8c.html#a7825cea1e7298f1133d5182f2ffd4d61" title=" " alt="" coords="5,449,107,475"/>
+<area shape="poly" title=" " alt="" coords="190,340,156,389,133,415,108,439,89,451,86,447,105,435,129,411,151,385,185,337"/>
+<area shape="rect" href="test__reset_8c.html#ad4e33906d92ff474d474046222376fc1" title=" " alt="" coords="5,499,107,524"/>
+<area shape="poly" title=" " alt="" coords="196,341,164,412,139,452,108,488,90,501,87,496,105,484,135,449,159,409,191,339"/>
+<area shape="rect" href="test__stats_8c.html#a4acac9114266f375c4168670f0b2465e" title=" " alt="" coords="5,548,107,573"/>
+<area shape="poly" title=" " alt="" coords="199,341,188,383,170,434,144,488,109,537,92,550,89,546,105,533,140,486,166,432,183,381,194,340"/>
+<area shape="rect" href="test__stats_8c.html#a9892ccb9cfa0c8aef019b4e8364b512b" title=" " alt="" coords="5,597,107,623"/>
+<area shape="poly" title=" " alt="" coords="202,341,193,391,177,456,149,524,131,557,109,587,93,599,89,595,105,583,126,554,145,522,172,454,188,390,197,340"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aae7764f15f994ef3c27d4a8dd3c0b679" name="aae7764f15f994ef3c27d4a8dd3c0b679"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae7764f15f994ef3c27d4a8dd3c0b679">&#9670;&#160;</a></span>arena_create()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structarena__t.html">arena_t</a> * arena_create </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>initial_block_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>subsequent_block_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Инициализирует аллокатор арены и выделяет первый блок памяти. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">initial_block_size</td><td>Размер первого блока в байтах. Должен быть строго &gt; 0. </td></tr>
+    <tr><td class="paramname">subsequent_block_size</td><td>Размер всех последующих блоков в байтах. Должен быть строго &gt; 0. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Указатель на экземпляр <a class="el" href="structarena__t.html">arena_t</a> или NULL в случае ошибки выделения памяти (OOM) или передачи невалидных параметров. </dd></dl>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="arlloc_8c_aae7764f15f994ef3c27d4a8dd3c0b679_icgraph.png" border="0" usemap="#aarlloc_8c_aae7764f15f994ef3c27d4a8dd3c0b679_icgraph" alt=""/></div>
+<map name="aarlloc_8c_aae7764f15f994ef3c27d4a8dd3c0b679_icgraph" id="aarlloc_8c_aae7764f15f994ef3c27d4a8dd3c0b679_icgraph">
+<area shape="rect" title="Инициализирует аллокатор арены и выделяет первый блок памяти." alt="" coords="155,425,261,451"/>
+<area shape="rect" href="test__alloc_8c.html#a3a009dd0a27f6b7c8f81085e3c175f15" title=" " alt="" coords="5,5,107,31"/>
+<area shape="poly" title=" " alt="" coords="205,412,202,341,189,244,176,191,159,139,135,89,105,44,92,33,95,29,109,40,140,86,164,137,182,190,194,243,207,340,210,411"/>
+<area shape="rect" href="test__alloc_8c.html#a022f4cd9b9ffc33d0a73733668dc700c" title=" " alt="" coords="5,55,107,80"/>
+<area shape="poly" title=" " alt="" coords="203,412,198,349,183,265,171,220,154,175,132,132,105,93,91,82,95,78,109,90,137,129,159,173,176,218,189,264,204,349,209,412"/>
+<area shape="rect" href="test__alloc_8c.html#ac697a575c335dc498d65c83bca3fe415" title=" " alt="" coords="5,104,107,129"/>
+<area shape="poly" title=" " alt="" coords="202,412,194,357,178,286,149,210,129,175,105,143,91,132,94,127,109,139,133,172,154,208,183,284,199,356,207,411"/>
+<area shape="rect" href="test__alloc_8c.html#a9ccf1a295f0e960f852aff619a6ae908" title=" " alt="" coords="5,153,107,179"/>
+<area shape="poly" title=" " alt="" coords="200,412,190,366,171,308,144,246,126,218,105,192,90,181,94,177,109,188,130,215,148,244,176,306,195,365,205,411"/>
+<area shape="rect" href="test__alloc_8c.html#afcf4fca7c6753e81ec01513d57106bb1" title=" " alt="" coords="5,203,107,228"/>
+<area shape="poly" title=" " alt="" coords="197,413,184,375,165,330,139,283,105,241,90,230,93,226,109,237,143,280,170,328,189,373,202,411"/>
+<area shape="rect" href="test__alloc_8c.html#a386ee74889c672a324f2c9951e48d65c" title=" " alt="" coords="5,252,107,277"/>
+<area shape="poly" title=" " alt="" coords="193,414,158,354,133,320,105,291,89,280,92,275,108,287,138,317,162,351,197,412"/>
+<area shape="rect" href="test__alloc_8c.html#adc8046441ab0ec583b47d51dde97522e" title=" " alt="" coords="5,301,107,327"/>
+<area shape="poly" title=" " alt="" coords="185,416,150,378,105,340,86,329,89,324,108,336,154,375,189,413"/>
+<area shape="rect" href="test__lifecycle_8c.html#a7d247135f98b50ef9b8d2f2c97bb7d35" title=" " alt="" coords="5,351,107,376"/>
+<area shape="poly" title=" " alt="" coords="168,421,105,390,83,379,85,374,108,385,171,417"/>
+<area shape="rect" href="test__lifecycle_8c.html#ab02b786b094c8895e66aa91022427a32" title=" " alt="" coords="5,400,107,425"/>
+<area shape="poly" title=" " alt="" coords="141,430,106,424,107,418,142,424"/>
+<area shape="rect" href="test__lifecycle_8c.html#abd580384291ce8b3743a243cf7d42b7b" title=" " alt="" coords="5,449,107,475"/>
+<area shape="poly" title=" " alt="" coords="142,451,107,457,106,451,141,446"/>
+<area shape="rect" href="test__lifecycle_8c.html#a63ac41b7e90d97d536fdd6283dc0ce4b" title=" " alt="" coords="5,499,107,524"/>
+<area shape="poly" title=" " alt="" coords="170,459,85,501,82,496,167,454"/>
+<area shape="rect" href="test__reset_8c.html#aef86d3227470cddf93091d0c7b7d1792" title=" " alt="" coords="5,548,107,573"/>
+<area shape="poly" title=" " alt="" coords="188,463,153,500,108,538,87,550,84,546,105,533,149,496,185,459"/>
+<area shape="rect" href="test__reset_8c.html#a7825cea1e7298f1133d5182f2ffd4d61" title=" " alt="" coords="5,597,107,623"/>
+<area shape="poly" title=" " alt="" coords="197,464,162,524,137,557,108,587,90,599,87,595,105,583,133,553,157,521,192,462"/>
+<area shape="rect" href="test__reset_8c.html#ad4e33906d92ff474d474046222376fc1" title=" " alt="" coords="5,647,107,672"/>
+<area shape="poly" title=" " alt="" coords="202,465,189,502,169,547,142,594,109,636,91,649,88,644,105,632,138,591,164,545,184,500,197,463"/>
+<area shape="rect" href="test__stats_8c.html#a4acac9114266f375c4168670f0b2465e" title=" " alt="" coords="5,696,107,721"/>
+<area shape="poly" title=" " alt="" coords="205,465,194,510,176,568,148,630,130,659,109,685,92,698,89,694,105,681,125,656,143,627,171,567,189,509,200,463"/>
+<area shape="rect" href="test__stats_8c.html#a9892ccb9cfa0c8aef019b4e8364b512b" title=" " alt="" coords="5,745,107,771"/>
+<area shape="poly" title=" " alt="" coords="207,465,199,519,182,590,153,666,133,702,109,735,93,747,89,743,105,731,128,699,148,663,177,588,194,518,202,464"/>
+<area shape="rect" href="test__stats_8c.html#a75f65a60c63aa64d5a4081fc971ea3f9" title=" " alt="" coords="5,795,107,820"/>
+<area shape="poly" title=" " alt="" coords="209,464,203,527,188,611,175,656,158,701,136,744,109,784,93,797,90,793,105,780,131,742,153,699,170,654,183,609,198,526,203,464"/>
+<area shape="rect" href="test__stats_8c.html#ac569662ca23c10fe9b5a7955e68708ad" title=" " alt="" coords="5,844,107,869"/>
+<area shape="poly" title=" " alt="" coords="210,464,207,535,193,631,181,684,163,737,139,787,109,833,94,846,90,842,105,830,135,784,158,735,176,683,188,630,201,534,204,464"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3bdc08ab0e9af64fab2c5c0557b1c1c3" name="a3bdc08ab0e9af64fab2c5c0557b1c1c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bdc08ab0e9af64fab2c5c0557b1c1c3">&#9670;&#160;</a></span>arena_destroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void arena_destroy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structarena__t.html">arena_t</a> *&#160;</td>
+          <td class="paramname"><em>arena</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Полностью освобождает все ресурсы, связанные с ареной, возвращая память операционной системе. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arena</td><td>Указатель на аллокатор. Передача NULL является безопасной операцией (no-op). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section warning"><dt>Предупреждения</dt><dd>После вызова функции использование указателя arena приводит к неопределенному поведению (Undefined Behavior). </dd></dl>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="arlloc_8c_a3bdc08ab0e9af64fab2c5c0557b1c1c3_icgraph.png" border="0" usemap="#aarlloc_8c_a3bdc08ab0e9af64fab2c5c0557b1c1c3_icgraph" alt=""/></div>
+<map name="aarlloc_8c_a3bdc08ab0e9af64fab2c5c0557b1c1c3_icgraph" id="aarlloc_8c_a3bdc08ab0e9af64fab2c5c0557b1c1c3_icgraph">
+<area shape="rect" title="Полностью освобождает все ресурсы, связанные с ареной, возвращая память операционной системе." alt="" coords="155,400,269,425"/>
+<area shape="rect" href="test__alloc_8c.html#a3a009dd0a27f6b7c8f81085e3c175f15" title=" " alt="" coords="5,5,107,31"/>
+<area shape="poly" title=" " alt="" coords="208,386,203,320,188,229,175,180,157,132,134,86,105,44,92,33,95,29,109,40,138,83,162,130,180,179,193,228,208,319,213,386"/>
+<area shape="rect" href="test__alloc_8c.html#a022f4cd9b9ffc33d0a73733668dc700c" title=" " alt="" coords="5,55,107,80"/>
+<area shape="poly" title=" " alt="" coords="206,387,199,328,182,251,169,209,152,168,131,128,105,93,91,82,94,78,109,89,135,126,157,165,174,207,187,249,204,327,212,386"/>
+<area shape="rect" href="test__alloc_8c.html#ac697a575c335dc498d65c83bca3fe415" title=" " alt="" coords="5,104,107,129"/>
+<area shape="poly" title=" " alt="" coords="205,387,195,336,176,272,147,204,128,171,105,143,91,132,94,128,109,139,132,168,152,201,181,270,200,335,210,386"/>
+<area shape="rect" href="test__alloc_8c.html#a9ccf1a295f0e960f852aff619a6ae908" title=" " alt="" coords="5,153,107,179"/>
+<area shape="poly" title=" " alt="" coords="202,387,190,346,170,294,142,240,105,192,90,181,93,177,109,188,146,237,175,292,195,344,207,386"/>
+<area shape="rect" href="test__alloc_8c.html#afcf4fca7c6753e81ec01513d57106bb1" title=" " alt="" coords="5,203,107,228"/>
+<area shape="poly" title=" " alt="" coords="199,388,163,317,137,277,105,241,89,230,92,226,108,237,141,274,168,314,203,386"/>
+<area shape="rect" href="test__alloc_8c.html#a386ee74889c672a324f2c9951e48d65c" title=" " alt="" coords="5,252,107,277"/>
+<area shape="poly" title=" " alt="" coords="193,390,156,341,132,315,105,291,87,280,90,275,108,287,135,311,160,338,197,387"/>
+<area shape="rect" href="test__alloc_8c.html#adc8046441ab0ec583b47d51dde97522e" title=" " alt="" coords="5,301,107,327"/>
+<area shape="poly" title=" " alt="" coords="182,394,105,340,85,329,87,325,108,336,185,389"/>
+<area shape="rect" href="test__lifecycle_8c.html#a7d247135f98b50ef9b8d2f2c97bb7d35" title=" " alt="" coords="5,351,107,376"/>
+<area shape="poly" title=" " alt="" coords="158,398,96,379,98,374,159,393"/>
+<area shape="rect" href="test__lifecycle_8c.html#ab02b786b094c8895e66aa91022427a32" title=" " alt="" coords="5,400,107,425"/>
+<area shape="poly" title=" " alt="" coords="141,415,107,415,107,410,141,410"/>
+<area shape="rect" href="test__lifecycle_8c.html#aad25e73f1398de7e319a20b0bfaa3ed3" title=" " alt="" coords="5,449,107,475"/>
+<area shape="poly" title=" " alt="" coords="159,432,98,452,96,447,158,427"/>
+<area shape="rect" href="test__reset_8c.html#aef86d3227470cddf93091d0c7b7d1792" title=" " alt="" coords="5,499,107,524"/>
+<area shape="poly" title=" " alt="" coords="185,436,108,488,85,501,83,496,105,484,182,431"/>
+<area shape="rect" href="test__reset_8c.html#a7825cea1e7298f1133d5182f2ffd4d61" title=" " alt="" coords="5,548,107,573"/>
+<area shape="poly" title=" " alt="" coords="197,439,159,487,108,537,88,550,85,546,105,533,155,484,192,435"/>
+<area shape="rect" href="test__reset_8c.html#ad4e33906d92ff474d474046222376fc1" title=" " alt="" coords="5,597,107,623"/>
+<area shape="poly" title=" " alt="" coords="203,439,167,511,141,551,108,587,90,599,87,595,105,583,136,547,163,508,198,437"/>
+<area shape="rect" href="test__stats_8c.html#a4acac9114266f375c4168670f0b2465e" title=" " alt="" coords="5,647,107,672"/>
+<area shape="poly" title=" " alt="" coords="207,440,194,482,174,533,146,587,109,636,91,649,88,644,105,632,141,584,169,531,189,480,202,438"/>
+<area shape="rect" href="test__stats_8c.html#a9892ccb9cfa0c8aef019b4e8364b512b" title=" " alt="" coords="5,696,107,721"/>
+<area shape="poly" title=" " alt="" coords="210,439,199,490,181,554,151,623,132,655,109,685,92,698,89,694,105,681,127,652,146,620,176,552,194,488,204,438"/>
+<area shape="rect" href="test__stats_8c.html#a75f65a60c63aa64d5a4081fc971ea3f9" title=" " alt="" coords="5,745,107,771"/>
+<area shape="poly" title=" " alt="" coords="211,440,204,498,187,576,156,659,135,698,109,735,93,747,90,743,105,731,130,696,151,657,181,574,198,497,206,439"/>
+<area shape="rect" href="test__stats_8c.html#ac569662ca23c10fe9b5a7955e68708ad" title=" " alt="" coords="5,795,107,820"/>
+<area shape="poly" title=" " alt="" coords="213,439,208,506,192,596,179,645,161,694,138,741,109,784,93,797,90,793,105,780,133,738,156,692,174,644,187,595,202,505,208,439"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac6109aecffeccd41531f01a4f5d592f2" name="ac6109aecffeccd41531f01a4f5d592f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6109aecffeccd41531f01a4f5d592f2">&#9670;&#160;</a></span>arena_get_stats()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void arena_get_stats </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structarena__t.html">arena_t</a> *&#160;</td>
+          <td class="paramname"><em>arena</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structarena__stats__t.html">arena_stats_t</a> *&#160;</td>
+          <td class="paramname"><em>stats</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Заполняет предоставленную структуру статистикой текущего состояния арены. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arena</td><td>Указатель на аллокатор. Не должен быть NULL. </td></tr>
+    <tr><td class="paramname">stats</td><td>Указатель на структуру <a class="el" href="structarena__stats__t.html" title="Структура, содержащая агрегированную статистику использования памяти арены.">arena_stats_t</a> для записи данных. Не должен быть NULL. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="arlloc_8c_ac6109aecffeccd41531f01a4f5d592f2_icgraph.png" border="0" usemap="#aarlloc_8c_ac6109aecffeccd41531f01a4f5d592f2_icgraph" alt=""/></div>
+<map name="aarlloc_8c_ac6109aecffeccd41531f01a4f5d592f2_icgraph" id="aarlloc_8c_ac6109aecffeccd41531f01a4f5d592f2_icgraph">
+<area shape="rect" title="Заполняет предоставленную структуру статистикой текущего состояния арены." alt="" coords="155,153,281,179"/>
+<area shape="rect" href="test__alloc_8c.html#afcf4fca7c6753e81ec01513d57106bb1" title=" " alt="" coords="5,5,107,31"/>
+<area shape="poly" title=" " alt="" coords="198,144,158,95,105,44,87,33,90,28,108,40,162,91,202,140"/>
+<area shape="rect" href="test__reset_8c.html#aef86d3227470cddf93091d0c7b7d1792" title=" " alt="" coords="5,55,107,80"/>
+<area shape="poly" title=" " alt="" coords="187,148,105,94,84,82,87,78,108,89,190,143"/>
+<area shape="rect" href="test__reset_8c.html#a7825cea1e7298f1133d5182f2ffd4d61" title=" " alt="" coords="5,104,107,129"/>
+<area shape="poly" title=" " alt="" coords="162,152,98,132,100,127,163,147"/>
+<area shape="rect" href="test__stats_8c.html#a4acac9114266f375c4168670f0b2465e" title=" " alt="" coords="5,153,107,179"/>
+<area shape="poly" title=" " alt="" coords="141,169,107,169,107,163,141,163"/>
+<area shape="rect" href="test__stats_8c.html#a9892ccb9cfa0c8aef019b4e8364b512b" title=" " alt="" coords="5,203,107,228"/>
+<area shape="poly" title=" " alt="" coords="163,185,100,205,98,200,162,180"/>
+<area shape="rect" href="test__stats_8c.html#a75f65a60c63aa64d5a4081fc971ea3f9" title=" " alt="" coords="5,252,107,277"/>
+<area shape="poly" title=" " alt="" coords="189,189,108,242,85,254,82,249,105,237,186,184"/>
+<area shape="rect" href="test__stats_8c.html#ac569662ca23c10fe9b5a7955e68708ad" title=" " alt="" coords="5,301,107,327"/>
+<area shape="poly" title=" " alt="" coords="202,192,162,240,108,291,88,303,85,299,105,287,158,236,197,188"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aee2cd64727614f5bb08796a43b8b1359" name="aee2cd64727614f5bb08796a43b8b1359"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee2cd64727614f5bb08796a43b8b1359">&#9670;&#160;</a></span>arena_reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void arena_reset </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structarena__t.html">arena_t</a> *&#160;</td>
+          <td class="paramname"><em>arena</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Сбрасывает арену в начальное состояние для повторного использования без возврата памяти ОС. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arena</td><td>Указатель на аллокатор.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Освобождает все блоки, кроме первого, и обнуляет счетчик использованной памяти в первом блоке. Все ранее полученные указатели на данные в этой арене становятся невалидными. </p>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="arlloc_8c_aee2cd64727614f5bb08796a43b8b1359_icgraph.png" border="0" usemap="#aarlloc_8c_aee2cd64727614f5bb08796a43b8b1359_icgraph" alt=""/></div>
+<map name="aarlloc_8c_aee2cd64727614f5bb08796a43b8b1359_icgraph" id="aarlloc_8c_aee2cd64727614f5bb08796a43b8b1359_icgraph">
+<area shape="rect" title="Сбрасывает арену в начальное состояние для повторного использования без возврата памяти ОС." alt="" coords="155,80,253,105"/>
+<area shape="rect" href="test__reset_8c.html#aef86d3227470cddf93091d0c7b7d1792" title=" " alt="" coords="5,5,107,31"/>
+<area shape="poly" title=" " alt="" coords="166,76,105,44,83,33,85,28,108,40,168,71"/>
+<area shape="rect" href="test__reset_8c.html#a7825cea1e7298f1133d5182f2ffd4d61" title=" " alt="" coords="5,55,107,80"/>
+<area shape="poly" title=" " alt="" coords="140,85,107,79,107,73,141,79"/>
+<area shape="rect" href="test__reset_8c.html#aa5e73bdb6e2c1c62facf1324d2f132af" title=" " alt="" coords="5,104,107,129"/>
+<area shape="poly" title=" " alt="" coords="141,106,107,111,107,106,140,100"/>
+<area shape="rect" href="test__reset_8c.html#ad4e33906d92ff474d474046222376fc1" title=" " alt="" coords="5,153,107,179"/>
+<area shape="poly" title=" " alt="" coords="167,114,84,156,82,151,164,109"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<map id="arena_reset" name="arena_reset">
+<area shape="rect" id="Node000001" title="Сбрасывает арену в начальное состояние для повторного использования без возврата памяти ОС." alt="" coords="155,80,253,105"/>
+<area shape="rect" id="Node000002" href="$test__reset_8c.html#aef86d3227470cddf93091d0c7b7d1792" title=" " alt="" coords="5,5,107,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,76,105,44,83,33,85,28,108,40,168,71"/>
+<area shape="rect" id="Node000003" href="$test__reset_8c.html#a7825cea1e7298f1133d5182f2ffd4d61" title=" " alt="" coords="5,55,107,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="140,85,107,79,107,73,141,79"/>
+<area shape="rect" id="Node000004" href="$test__reset_8c.html#aa5e73bdb6e2c1c62facf1324d2f132af" title=" " alt="" coords="5,104,107,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="141,106,107,111,107,106,140,100"/>
+<area shape="rect" id="Node000005" href="$test__reset_8c.html#ad4e33906d92ff474d474046222376fc1" title=" " alt="" coords="5,153,107,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="167,114,84,156,82,151,164,109"/>
+</map>

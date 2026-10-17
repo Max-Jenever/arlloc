@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>arlloc: Структура arena_t</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">arlloc<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Открытые атрибуты</a> &#124;
+<a href="structarena__t-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle"><div class="title">Структура arena_t</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="dynheader">
+Граф связей класса arena_t:</div>
+<div class="dyncontent">
+<div class="center"><img src="structarena__t__coll__graph.png" border="0" usemap="#aarena__t_coll__map" alt="Collaboration graph"/></div>
+<map name="aarena__t_coll__map" id="aarena__t_coll__map">
+<area shape="rect" title=" " alt="" coords="27,108,97,133"/>
+<area shape="rect" href="structarena__block__t.html" title=" " alt="" coords="5,5,119,31"/>
+<area shape="poly" title=" " alt="" coords="65,45,65,108,59,108,59,45"/>
+<area shape="poly" title=" " alt="" coords="133,8,142,12,145,18,137,27,119,30,118,25,135,22,140,18,138,16,131,13"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">см. легенду</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Открытые атрибуты</h2></td></tr>
+<tr class="memitem:a201510f6a12954197b117b996e42ecba" id="r_a201510f6a12954197b117b996e42ecba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structarena__block__t.html">arena_block_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structarena__t.html#a201510f6a12954197b117b996e42ecba">current_block</a></td></tr>
+<tr class="separator:a201510f6a12954197b117b996e42ecba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41c1e8d0db1ad564d0122f2b7e3e3391" id="r_a41c1e8d0db1ad564d0122f2b7e3e3391"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structarena__block__t.html">arena_block_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structarena__t.html#a41c1e8d0db1ad564d0122f2b7e3e3391">first_block</a></td></tr>
+<tr class="separator:a41c1e8d0db1ad564d0122f2b7e3e3391"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc3c454566a444839128af80baf13bb6" id="r_acc3c454566a444839128af80baf13bb6"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structarena__t.html#acc3c454566a444839128af80baf13bb6">subsequent_block_size</a></td></tr>
+<tr class="separator:acc3c454566a444839128af80baf13bb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Данные класса</h2>
+<a id="a201510f6a12954197b117b996e42ecba" name="a201510f6a12954197b117b996e42ecba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a201510f6a12954197b117b996e42ecba">&#9670;&#160;</a></span>current_block</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structarena__block__t.html">arena_block_t</a>* arena_t::current_block</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a41c1e8d0db1ad564d0122f2b7e3e3391" name="a41c1e8d0db1ad564d0122f2b7e3e3391"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41c1e8d0db1ad564d0122f2b7e3e3391">&#9670;&#160;</a></span>first_block</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structarena__block__t.html">arena_block_t</a>* arena_t::first_block</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acc3c454566a444839128af80baf13bb6" name="acc3c454566a444839128af80baf13bb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc3c454566a444839128af80baf13bb6">&#9670;&#160;</a></span>subsequent_block_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t arena_t::subsequent_block_size</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>Объявления и описания членов структуры находятся в файле:<ul>
+<li>arlloc-rs/c-src/<a class="el" href="arlloc_8c.html">arlloc.c</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

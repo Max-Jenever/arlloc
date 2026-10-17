@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>arlloc: Исходный файл arlloc-rs/c-src/arlloc.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">arlloc<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_a29848cc5405417993f8fbcfa25a49eb.html">arlloc-rs</a></li><li class="navelem"><a class="el" href="dir_72d4dba9fa23b036552b25aac525ab60.html">c-src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">arlloc.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="arlloc_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef ARLLOC_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define ARLLOC_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="arlloc_8h.html#ab9a466408256113ba1083c28c43cd7ba">   12</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structarena__t.html">arena_t</a> <a class="code hl_struct" href="structarena__t.html">arena_t</a>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="};">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structarena__stats__t.html">   15</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structarena__stats__t.html">arena_stats_t</a> {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structarena__stats__t.html#abc4cd9375407e9a78b4b3a59463cb7e5">   16</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structarena__stats__t.html#abc4cd9375407e9a78b4b3a59463cb7e5">total_allocated_bytes</a>;   </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structarena__stats__t.html#a9f21d8715397a733c9b7e860495e3495">   17</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structarena__stats__t.html#a9f21d8715397a733c9b7e860495e3495">total_used_bytes</a>;        </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="structarena__stats__t.html#a0f3ce20668bac55b28f04384f2ca86f0">   18</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structarena__stats__t.html#a0f3ce20668bac55b28f04384f2ca86f0">block_count</a>;             </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="arlloc_8h.html#a90b7eddee087c6e9f307279e8a0eb41b">   19</a></span>} <a class="code hl_struct" href="structarena__stats__t.html">arena_stats_t</a>;</div>
+</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><a class="code hl_struct" href="structarena__t.html">arena_t</a>* <a class="code hl_function" href="arlloc_8h.html#aae7764f15f994ef3c27d4a8dd3c0b679">arena_create</a>(<span class="keywordtype">size_t</span> initial_block_size, <span class="keywordtype">size_t</span> subsequent_block_size);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keywordtype">void</span> <a class="code hl_function" href="arlloc_8h.html#a3bdc08ab0e9af64fab2c5c0557b1c1c3">arena_destroy</a>(<a class="code hl_struct" href="structarena__t.html">arena_t</a>* arena);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keywordtype">void</span>* <a class="code hl_function" href="arlloc_8h.html#a8ba5a669cbefda51ef3a78208d0b764b">arena_alloc</a>(<a class="code hl_struct" href="structarena__t.html">arena_t</a>* arena, <span class="keywordtype">size_t</span> size, <span class="keywordtype">size_t</span> alignment);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keywordtype">void</span> <a class="code hl_function" href="arlloc_8h.html#aee2cd64727614f5bb08796a43b8b1359">arena_reset</a>(<a class="code hl_struct" href="structarena__t.html">arena_t</a>* arena);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keywordtype">void</span> <a class="code hl_function" href="arlloc_8h.html#ac6109aecffeccd41531f01a4f5d592f2">arena_get_stats</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structarena__t.html">arena_t</a>* arena, <a class="code hl_struct" href="structarena__stats__t.html">arena_stats_t</a>* stats);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>}</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#endif </span><span class="comment">// ARLLOC_H</span></div>
+<div class="ttc" id="aarlloc_8h_html_a3bdc08ab0e9af64fab2c5c0557b1c1c3"><div class="ttname"><a href="arlloc_8h.html#a3bdc08ab0e9af64fab2c5c0557b1c1c3">arena_destroy</a></div><div class="ttdeci">void arena_destroy(arena_t *arena)</div><div class="ttdoc">Полностью освобождает все ресурсы, связанные с ареной, возвращая память операционной системе.</div><div class="ttdef"><b>Definition</b> arlloc.c:53</div></div>
+<div class="ttc" id="aarlloc_8h_html_a8ba5a669cbefda51ef3a78208d0b764b"><div class="ttname"><a href="arlloc_8h.html#a8ba5a669cbefda51ef3a78208d0b764b">arena_alloc</a></div><div class="ttdeci">void * arena_alloc(arena_t *arena, size_t size, size_t alignment)</div><div class="ttdoc">Выделяет непрерывный блок памяти внутри арены.</div><div class="ttdef"><b>Definition</b> arlloc.c:76</div></div>
+<div class="ttc" id="aarlloc_8h_html_aae7764f15f994ef3c27d4a8dd3c0b679"><div class="ttname"><a href="arlloc_8h.html#aae7764f15f994ef3c27d4a8dd3c0b679">arena_create</a></div><div class="ttdeci">arena_t * arena_create(size_t initial_block_size, size_t subsequent_block_size)</div><div class="ttdoc">Инициализирует аллокатор арены и выделяет первый блок памяти.</div><div class="ttdef"><b>Definition</b> arlloc.c:26</div></div>
+<div class="ttc" id="aarlloc_8h_html_ac6109aecffeccd41531f01a4f5d592f2"><div class="ttname"><a href="arlloc_8h.html#ac6109aecffeccd41531f01a4f5d592f2">arena_get_stats</a></div><div class="ttdeci">void arena_get_stats(const arena_t *arena, arena_stats_t *stats)</div><div class="ttdoc">Заполняет предоставленную структуру статистикой текущего состояния арены.</div><div class="ttdef"><b>Definition</b> arlloc.c:165</div></div>
+<div class="ttc" id="aarlloc_8h_html_aee2cd64727614f5bb08796a43b8b1359"><div class="ttname"><a href="arlloc_8h.html#aee2cd64727614f5bb08796a43b8b1359">arena_reset</a></div><div class="ttdeci">void arena_reset(arena_t *arena)</div><div class="ttdoc">Сбрасывает арену в начальное состояние для повторного использования без возврата памяти ОС.</div><div class="ttdef"><b>Definition</b> arlloc.c:141</div></div>
+<div class="ttc" id="astructarena__stats__t_html"><div class="ttname"><a href="structarena__stats__t.html">arena_stats_t</a></div><div class="ttdoc">Структура, содержащая агрегированную статистику использования памяти арены.</div><div class="ttdef"><b>Definition</b> arlloc.h:15</div></div>
+<div class="ttc" id="astructarena__stats__t_html_a0f3ce20668bac55b28f04384f2ca86f0"><div class="ttname"><a href="structarena__stats__t.html#a0f3ce20668bac55b28f04384f2ca86f0">arena_stats_t::block_count</a></div><div class="ttdeci">size_t block_count</div><div class="ttdoc">Количество активных блоков памяти в связном списке арены.</div><div class="ttdef"><b>Definition</b> arlloc.h:18</div></div>
+<div class="ttc" id="astructarena__stats__t_html_a9f21d8715397a733c9b7e860495e3495"><div class="ttname"><a href="structarena__stats__t.html#a9f21d8715397a733c9b7e860495e3495">arena_stats_t::total_used_bytes</a></div><div class="ttdeci">size_t total_used_bytes</div><div class="ttdoc">Объем памяти, фактически выделенный пользователю (с учетом выравнивания).</div><div class="ttdef"><b>Definition</b> arlloc.h:17</div></div>
+<div class="ttc" id="astructarena__stats__t_html_abc4cd9375407e9a78b4b3a59463cb7e5"><div class="ttname"><a href="structarena__stats__t.html#abc4cd9375407e9a78b4b3a59463cb7e5">arena_stats_t::total_allocated_bytes</a></div><div class="ttdeci">size_t total_allocated_bytes</div><div class="ttdoc">Общий объем памяти, запрошенный у ОС (включая служебные заголовки блоков).</div><div class="ttdef"><b>Definition</b> arlloc.h:16</div></div>
+<div class="ttc" id="astructarena__t_html"><div class="ttname"><a href="structarena__t.html">arena_t</a></div><div class="ttdef"><b>Definition</b> arlloc.c:16</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
