@@ -35,7 +35,7 @@ fn bench_arlloc(c: &mut Criterion) {
         });
     });
 
-    // НОВЫЙ ТЕСТ: Чистая скорость аллокации без учета создания/уничтожения арены
+    // Чистая скорость аллокации без учета создания/уничтожения арены
     group.bench_function("bulk_alloc_only_10k", |b| {
         let arena = Arena::new(65536, 65536).expect("Failed to create arena");
         b.iter(|| {

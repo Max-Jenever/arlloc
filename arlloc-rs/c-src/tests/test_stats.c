@@ -3,8 +3,6 @@
 #include "../arlloc.h"
 #include "main_tests.h"
 
-//Шлюха ебаная нахуй
-
 // Тест: начальная статистика после создания арены.
 START_TEST(test_stats_initial)
 {

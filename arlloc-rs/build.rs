@@ -1,8 +1,7 @@
 fn main() {
     let c_src_dir = "c-src";
 
-    // 2. Инструктируем Cargo пересобирать крейт при изменении C-файлов.
-    // Это обеспечивает корректную инкрементальную сборку.
+    // Инструктируем Cargo пересобирать крейт при изменении C-файлов
     println!("cargo:rerun-if-changed={}/arlloc.c", c_src_dir);
     println!("cargo:rerun-if-changed={}/arlloc.h", c_src_dir);
 
@@ -14,7 +13,7 @@ fn main() {
     build.flag_if_supported("-Wextra");
     build.flag_if_supported("-Wpedantic");
 
-    // 6. Компилируем код в статическую библиотеку с именем "arlloc".
+    // Компилируем код в статическую библиотеку с именем "arlloc".
     // Крейт cc автоматически создаст libarlloc.a (Unix) или arlloc.lib (Windows)
     // и передаст Cargo необходимые инструкции для линковки (rustc-link-lib и rustc-link-search).
     build.compile("arlloc");

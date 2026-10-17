@@ -97,7 +97,6 @@ START_TEST(test_alloc_overflow_to_new_block)
     ck_assert_ptr_nonnull(p3);
 
     // Указатели из разных блоков не должны перекрываться
-    //ck_assert((uintptr_t)p3 < (uintptr_t)p1 || (uintptr_t)p3 > (uintptr_t)p2 + 32);
     arena_stats_t stats;
     arena_get_stats(arena, &stats);
     ck_assert_uint_eq(stats.block_count, 2); // Ожидаем, что создан второй блок
