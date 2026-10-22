@@ -1,0 +1,9 @@
+<map id="START_TEST" name="START_TEST">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,107,80"/>
+<area shape="rect" id="Node000002" href="$arlloc_8c.html#a8ba5a669cbefda51ef3a78208d0b764b" title="Выделяет непрерывный блок памяти внутри арены." alt="" coords="163,5,261,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,52,157,32,159,37,98,57"/>
+<area shape="rect" id="Node000003" href="$arlloc_8c.html#aae7764f15f994ef3c27d4a8dd3c0b679" title="Инициализирует аллокатор арены и выделяет первый блок памяти." alt="" coords="159,55,265,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="107,65,145,65,145,70,107,70"/>
+<area shape="rect" id="Node000004" href="$arlloc_8c.html#a3bdc08ab0e9af64fab2c5c0557b1c1c3" title="Полностью освобождает все ресурсы, связанные с ареной, возвращая память операционной системе." alt="" coords="155,104,269,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="98,77,159,97,157,102,96,83"/>
+</map>

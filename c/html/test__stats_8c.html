@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>arlloc: Файл arlloc-rs/c-src/tests/test_stats.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">arlloc<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_a29848cc5405417993f8fbcfa25a49eb.html">arlloc-rs</a></li><li class="navelem"><a class="el" href="dir_72d4dba9fa23b036552b25aac525ab60.html">c-src</a></li><li class="navelem"><a class="el" href="dir_a9ab7c35954d176299aed62786474b2e.html">tests</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Функции</a>  </div>
+  <div class="headertitle"><div class="title">Файл test_stats.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;check.h&gt;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="arlloc_8h_source.html">../arlloc.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="main__tests_8h_source.html">main_tests.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Граф включаемых заголовочных файлов для test_stats.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="test__stats_8c__incl.png" border="0" usemap="#aarlloc-rs_2c-src_2tests_2test__stats_8c" alt=""/></div>
+<map name="aarlloc-rs_2c-src_2tests_2test__stats_8c" id="aarlloc-rs_2c-src_2tests_2test__stats_8c">
+<area shape="rect" title=" " alt="" coords="61,5,208,45"/>
+<area shape="rect" title=" " alt="" coords="5,167,77,192"/>
+<area shape="poly" title=" " alt="" coords="82,48,51,67,26,95,22,109,22,124,31,153,26,155,16,124,16,108,22,92,47,63,79,43"/>
+<area shape="rect" title=" " alt="" coords="143,167,217,192"/>
+<area shape="poly" title=" " alt="" coords="143,45,157,93,175,153,170,154,152,94,138,46"/>
+<area shape="rect" href="arlloc_8h.html" title=" " alt="" coords="217,93,300,119"/>
+<area shape="poly" title=" " alt="" coords="166,43,230,84,227,88,163,48"/>
+<area shape="rect" href="main__tests_8h.html" title=" " alt="" coords="36,93,143,119"/>
+<area shape="poly" title=" " alt="" coords="126,47,105,83,101,80,121,44"/>
+<area shape="poly" title=" " alt="" coords="248,121,205,159,201,156,244,117"/>
+<area shape="rect" title=" " alt="" coords="242,167,313,192"/>
+<area shape="poly" title=" " alt="" coords="264,118,273,153,268,154,259,120"/>
+<area shape="poly" title=" " alt="" coords="84,121,59,157,54,154,79,118"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a75f65a60c63aa64d5a4081fc971ea3f9" id="r_a75f65a60c63aa64d5a4081fc971ea3f9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__stats_8c.html#a75f65a60c63aa64d5a4081fc971ea3f9">START_TEST</a> (test_stats_initial)</td></tr>
+<tr class="separator:a75f65a60c63aa64d5a4081fc971ea3f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9892ccb9cfa0c8aef019b4e8364b512b" id="r_a9892ccb9cfa0c8aef019b4e8364b512b"><td class="memItemLeft" align="right" valign="top">END_TEST&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__stats_8c.html#a9892ccb9cfa0c8aef019b4e8364b512b">START_TEST</a> (test_stats_after_allocs)</td></tr>
+<tr class="separator:a9892ccb9cfa0c8aef019b4e8364b512b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4acac9114266f375c4168670f0b2465e" id="r_a4acac9114266f375c4168670f0b2465e"><td class="memItemLeft" align="right" valign="top">END_TEST&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__stats_8c.html#a4acac9114266f375c4168670f0b2465e">START_TEST</a> (test_stats_accounts_padding)</td></tr>
+<tr class="separator:a4acac9114266f375c4168670f0b2465e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac569662ca23c10fe9b5a7955e68708ad" id="r_ac569662ca23c10fe9b5a7955e68708ad"><td class="memItemLeft" align="right" valign="top">END_TEST&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__stats_8c.html#ac569662ca23c10fe9b5a7955e68708ad">START_TEST</a> (test_stats_null_args)</td></tr>
+<tr class="separator:ac569662ca23c10fe9b5a7955e68708ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82126979b4cfca518d52f9c6b8c2d43a" id="r_a82126979b4cfca518d52f9c6b8c2d43a"><td class="memItemLeft" align="right" valign="top">END_TEST Suite *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__stats_8c.html#a82126979b4cfca518d52f9c6b8c2d43a">suite_stats</a> (void)</td></tr>
+<tr class="separator:a82126979b4cfca518d52f9c6b8c2d43a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Функции</h2>
+<a id="a4acac9114266f375c4168670f0b2465e" name="a4acac9114266f375c4168670f0b2465e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4acac9114266f375c4168670f0b2465e">&#9670;&#160;</a></span>START_TEST() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">END_TEST START_TEST </td>
+          <td>(</td>
+          <td class="paramtype">test_stats_accounts_padding&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="test__stats_8c_a4acac9114266f375c4168670f0b2465e_cgraph.png" border="0" usemap="#atest__stats_8c_a4acac9114266f375c4168670f0b2465e_cgraph" alt=""/></div>
+<map name="atest__stats_8c_a4acac9114266f375c4168670f0b2465e_cgraph" id="atest__stats_8c_a4acac9114266f375c4168670f0b2465e_cgraph">
+<area shape="rect" title=" " alt="" coords="5,80,107,105"/>
+<area shape="rect" href="arlloc_8c.html#a8ba5a669cbefda51ef3a78208d0b764b" title="Выделяет непрерывный блок памяти внутри арены." alt="" coords="169,5,267,31"/>
+<area shape="poly" title=" " alt="" coords="79,77,154,40,168,33,170,38,156,44,81,82"/>
+<area shape="rect" href="arlloc_8c.html#aae7764f15f994ef3c27d4a8dd3c0b679" title="Инициализирует аллокатор арены и выделяет первый блок памяти." alt="" coords="165,55,271,80"/>
+<area shape="poly" title=" " alt="" coords="106,82,151,75,151,80,107,87"/>
+<area shape="rect" href="arlloc_8c.html#a3bdc08ab0e9af64fab2c5c0557b1c1c3" title="Полностью освобождает все ресурсы, связанные с ареной, возвращая память операционной системе." alt="" coords="161,104,275,129"/>
+<area shape="poly" title=" " alt="" coords="107,97,148,104,147,109,106,103"/>
+<area shape="rect" href="arlloc_8c.html#ac6109aecffeccd41531f01a4f5d592f2" title="Заполняет предоставленную структуру статистикой текущего состояния арены." alt="" coords="155,153,281,179"/>
+<area shape="poly" title=" " alt="" coords="83,103,156,138,173,146,171,151,154,143,81,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9892ccb9cfa0c8aef019b4e8364b512b" name="a9892ccb9cfa0c8aef019b4e8364b512b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9892ccb9cfa0c8aef019b4e8364b512b">&#9670;&#160;</a></span>START_TEST() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">END_TEST START_TEST </td>
+          <td>(</td>
+          <td class="paramtype">test_stats_after_allocs&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="test__stats_8c_a9892ccb9cfa0c8aef019b4e8364b512b_cgraph.png" border="0" usemap="#atest__stats_8c_a9892ccb9cfa0c8aef019b4e8364b512b_cgraph" alt=""/></div>
+<map name="atest__stats_8c_a9892ccb9cfa0c8aef019b4e8364b512b_cgraph" id="atest__stats_8c_a9892ccb9cfa0c8aef019b4e8364b512b_cgraph">
+<area shape="rect" title=" " alt="" coords="5,80,107,105"/>
+<area shape="rect" href="arlloc_8c.html#a8ba5a669cbefda51ef3a78208d0b764b" title="Выделяет непрерывный блок памяти внутри арены." alt="" coords="169,5,267,31"/>
+<area shape="poly" title=" " alt="" coords="79,77,154,40,168,33,170,38,156,44,81,82"/>
+<area shape="rect" href="arlloc_8c.html#aae7764f15f994ef3c27d4a8dd3c0b679" title="Инициализирует аллокатор арены и выделяет первый блок памяти." alt="" coords="165,55,271,80"/>
+<area shape="poly" title=" " alt="" coords="106,82,151,75,151,80,107,87"/>
+<area shape="rect" href="arlloc_8c.html#a3bdc08ab0e9af64fab2c5c0557b1c1c3" title="Полностью освобождает все ресурсы, связанные с ареной, возвращая память операционной системе." alt="" coords="161,104,275,129"/>
+<area shape="poly" title=" " alt="" coords="107,97,148,104,147,109,106,103"/>
+<area shape="rect" href="arlloc_8c.html#ac6109aecffeccd41531f01a4f5d592f2" title="Заполняет предоставленную структуру статистикой текущего состояния арены." alt="" coords="155,153,281,179"/>
+<area shape="poly" title=" " alt="" coords="83,103,156,138,173,146,171,151,154,143,81,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a75f65a60c63aa64d5a4081fc971ea3f9" name="a75f65a60c63aa64d5a4081fc971ea3f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75f65a60c63aa64d5a4081fc971ea3f9">&#9670;&#160;</a></span>START_TEST() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">START_TEST </td>
+          <td>(</td>
+          <td class="paramtype">test_stats_initial&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="test__stats_8c_a75f65a60c63aa64d5a4081fc971ea3f9_cgraph.png" border="0" usemap="#atest__stats_8c_a75f65a60c63aa64d5a4081fc971ea3f9_cgraph" alt=""/></div>
+<map name="atest__stats_8c_a75f65a60c63aa64d5a4081fc971ea3f9_cgraph" id="atest__stats_8c_a75f65a60c63aa64d5a4081fc971ea3f9_cgraph">
+<area shape="rect" title=" " alt="" coords="5,55,107,80"/>
+<area shape="rect" href="arlloc_8c.html#aae7764f15f994ef3c27d4a8dd3c0b679" title="Инициализирует аллокатор арены и выделяет первый блок памяти." alt="" coords="165,5,271,31"/>
+<area shape="poly" title=" " alt="" coords="98,52,161,32,163,37,99,57"/>
+<area shape="rect" href="arlloc_8c.html#a3bdc08ab0e9af64fab2c5c0557b1c1c3" title="Полностью освобождает все ресурсы, связанные с ареной, возвращая память операционной системе." alt="" coords="161,55,275,80"/>
+<area shape="poly" title=" " alt="" coords="107,65,147,65,147,70,107,70"/>
+<area shape="rect" href="arlloc_8c.html#ac6109aecffeccd41531f01a4f5d592f2" title="Заполняет предоставленную структуру статистикой текущего состояния арены." alt="" coords="155,104,281,129"/>
+<area shape="poly" title=" " alt="" coords="99,77,163,97,161,102,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac569662ca23c10fe9b5a7955e68708ad" name="ac569662ca23c10fe9b5a7955e68708ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac569662ca23c10fe9b5a7955e68708ad">&#9670;&#160;</a></span>START_TEST() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">END_TEST START_TEST </td>
+          <td>(</td>
+          <td class="paramtype">test_stats_null_args&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="test__stats_8c_ac569662ca23c10fe9b5a7955e68708ad_cgraph.png" border="0" usemap="#atest__stats_8c_ac569662ca23c10fe9b5a7955e68708ad_cgraph" alt=""/></div>
+<map name="atest__stats_8c_ac569662ca23c10fe9b5a7955e68708ad_cgraph" id="atest__stats_8c_ac569662ca23c10fe9b5a7955e68708ad_cgraph">
+<area shape="rect" title=" " alt="" coords="5,55,107,80"/>
+<area shape="rect" href="arlloc_8c.html#aae7764f15f994ef3c27d4a8dd3c0b679" title="Инициализирует аллокатор арены и выделяет первый блок памяти." alt="" coords="165,5,271,31"/>
+<area shape="poly" title=" " alt="" coords="98,52,161,32,163,37,99,57"/>
+<area shape="rect" href="arlloc_8c.html#a3bdc08ab0e9af64fab2c5c0557b1c1c3" title="Полностью освобождает все ресурсы, связанные с ареной, возвращая память операционной системе." alt="" coords="161,55,275,80"/>
+<area shape="poly" title=" " alt="" coords="107,65,147,65,147,70,107,70"/>
+<area shape="rect" href="arlloc_8c.html#ac6109aecffeccd41531f01a4f5d592f2" title="Заполняет предоставленную структуру статистикой текущего состояния арены." alt="" coords="155,104,281,129"/>
+<area shape="poly" title=" " alt="" coords="99,77,163,97,161,102,98,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a82126979b4cfca518d52f9c6b8c2d43a" name="a82126979b4cfca518d52f9c6b8c2d43a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82126979b4cfca518d52f9c6b8c2d43a">&#9670;&#160;</a></span>suite_stats()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">END_TEST Suite * suite_stats </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="test__stats_8c_a82126979b4cfca518d52f9c6b8c2d43a_icgraph.png" border="0" usemap="#atest__stats_8c_a82126979b4cfca518d52f9c6b8c2d43a_icgraph" alt=""/></div>
+<map name="atest__stats_8c_a82126979b4cfca518d52f9c6b8c2d43a_icgraph" id="atest__stats_8c_a82126979b4cfca518d52f9c6b8c2d43a_icgraph">
+<area shape="rect" title=" " alt="" coords="108,5,201,31"/>
+<area shape="rect" href="main__tests_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

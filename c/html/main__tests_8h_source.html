@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>arlloc: Исходный файл arlloc-rs/c-src/tests/main_tests.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">arlloc<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_a29848cc5405417993f8fbcfa25a49eb.html">arlloc-rs</a></li><li class="navelem"><a class="el" href="dir_72d4dba9fa23b036552b25aac525ab60.html">c-src</a></li><li class="navelem"><a class="el" href="dir_a9ab7c35954d176299aed62786474b2e.html">tests</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">main_tests.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="main__tests_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef MAIN_TEST_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define MAIN_TEST_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;check.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>Suite* <a class="code hl_function" href="main__tests_8h.html#a6e968658f66d26d18aebc7308f5d9036">suite_lifecycle</a>(<span class="keywordtype">void</span>);  <span class="comment">// create, destroy</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>Suite* <a class="code hl_function" href="main__tests_8h.html#a5ca3ccd61eb382039e41187743296ff4">suite_alloc</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>Suite* <a class="code hl_function" href="main__tests_8h.html#a1948f6d5b5e944ebc076c56944bbf2ac">suite_reset</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>Suite* <a class="code hl_function" href="main__tests_8h.html#a6863bcc5ccb8a34c9b8cf9a651953877">suite_stats</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#endif </span><span class="comment">// MAIN_TEST_H</span></div>
+<div class="ttc" id="amain__tests_8h_html_a1948f6d5b5e944ebc076c56944bbf2ac"><div class="ttname"><a href="main__tests_8h.html#a1948f6d5b5e944ebc076c56944bbf2ac">suite_reset</a></div><div class="ttdeci">Suite * suite_reset(void)</div><div class="ttdef"><b>Definition</b> test_reset.c:72</div></div>
+<div class="ttc" id="amain__tests_8h_html_a5ca3ccd61eb382039e41187743296ff4"><div class="ttname"><a href="main__tests_8h.html#a5ca3ccd61eb382039e41187743296ff4">suite_alloc</a></div><div class="ttdeci">Suite * suite_alloc(void)</div><div class="ttdef"><b>Definition</b> test_alloc.c:120</div></div>
+<div class="ttc" id="amain__tests_8h_html_a6863bcc5ccb8a34c9b8cf9a651953877"><div class="ttname"><a href="main__tests_8h.html#a6863bcc5ccb8a34c9b8cf9a651953877">suite_stats</a></div><div class="ttdeci">Suite * suite_stats(void)</div><div class="ttdef"><b>Definition</b> test_stats.c:80</div></div>
+<div class="ttc" id="amain__tests_8h_html_a6e968658f66d26d18aebc7308f5d9036"><div class="ttname"><a href="main__tests_8h.html#a6e968658f66d26d18aebc7308f5d9036">suite_lifecycle</a></div><div class="ttdeci">Suite * suite_lifecycle(void)</div><div class="ttdef"><b>Definition</b> test_lifecycle.c:50</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
