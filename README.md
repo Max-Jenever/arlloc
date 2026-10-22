@@ -1,67 +1,77 @@
 # arlloc
 
-Высокопроизводительный аллокатор аренной памяти (bump allocator) с ядром на C и безопасной оберткой на Rust. Обеспечивает выделение памяти за O(1) без фрагментации, блокировок и системных вызовов в процессе работы.
+High-performance arena memory allocator (bump allocator) with a C core
+and a safe Rust wrapper.
+Provides O(1) memory allocation without:
+fragmentation, locks, or system calls during operation.
 
-## Архитектура проекта
+## Project Architecture
 
-Проект представляет собой единый Rust-крейт, в котором низкоуровневая логика реализована на C (стандарт C11) и прозрачно компилируется через `build.rs` с использованием крейта `cc`. Rust-обертка инкапсулирует `unsafe` FFI-вызовы, гарантируя корректное управление временем жизни (lifetime) и автоматическое освобождение ресурсов (Drop).
+The project is a single Rust crate in which the low-level logic
+is implemented in C (C11 standard) and transparently compiled via build.rs
+using the cc crate. The Rust wrapper encapsulates the unsafe FFI calls,
+ensuring correct lifetime management and automatic resource release (Drop).
 
-## Сборка и тестирование
+## Build and testing
 
-Для работы требуются компилятор C (GCC/Clang) и актуальный Rust toolchain. Все этапы управляются через Cargo.
+A C compiler (GCC/Clang) and an up-to-date Rust toolchain are required.
+All stages are managed through Cargo.
 
 ```bash
-# Сборка проекта (включая компиляцию C-ядра)
+
 cargo build --release
 
-# Запуск модульных тестов
+
 cargo test
 
-# Запуск бенчмарков производительности
+
 cargo bench
 ```
-```
-```
 
-## Использование (Rust)
+## Using (Rust)
 
 ```rust
 use arlloc::Arena;
 
 fn main() {
-    // Инициализация арены (начальный и последующий размер блока: 64 КБ)
-    let arena = Arena::new(65536, 65536).expect("Ошибка выделения памяти");
+    // Initialization arena (size 64 KB)
+    let arena = Arena::new(65536, 65536).expect("Error memory allocation");
 
-    // Выделение памяти (тип должен реализовывать `Copy`)
+    // allocation memory (type will be release `Copy` trait)
     if let Some(val) = arena.alloc(67u64) {
         assert_eq!(*val, 67);
     }
 
-    // Сброс арены (все ранее полученные ссылки становятся невалидными)
+    // Reset arena
     arena.reset();
 } 
-// Память освобождается автоматически при выходе `arena` из области видимости.
+// Arena was be dropped ,memory is free
 ```
 
-## Производительность
+## Benchmarks
 
-Сравнительные замеры выполнены с использованием фреймворка `criterion` (Rust) и `std::chrono` (C++). Тестовая нагрузка: выделение 64-байтной структуры.
+Comparative benchmarks were performed using the criterion framework (Rust) and std::chrono (C++).
+Test workload: allocation of a 64-byte structure.
 
-| Аллокатор | Одиночное выделение | Массовое выделение (10 000 итераций) | Примечание |
+| allocation | singl allocation | mass allocation (10 000 iteration) | note |
 | :--- | :--- | :--- | :--- |
-| **arlloc (C/Rust FFI)** | **~6.68 нс** | **~65.0 мкс** | Линейная сложность O(1), отсутствие проверок в hot path. |
-| bumpalo (Rust) | ~16.1 нс | ~163.0 мкс | Накладные расходы на проверки границ и `UnsafeCell`. |
-| std::pmr (C++17) | ~18.4 нс | ~46.1 мкс* | *Артефакт DCE при компиляции с `-O3`. |
+| **arlloc (C/Rust FFI)** | **~6.68 ns** | **~65.0 µs** | Linear complexity O(1), no checks in the hot path. |
+| bumpalo (Rust) | ~16.1 ns | ~163.0 µs | Overhead from bounds checks and UnsafeCell. |
+| std::pmr (C++17) | ~18.4 ns | ~46.1 µs* | *DCE artifact when compiling with -O3. |
 
-*Вывод: Чистая скорость аллокации `arlloc` превосходит аналоги на 35–45% за счет минимизации инструкций в критическом пути и отсутствия косвенных вызовов (vtable).*
+*Conclusion: The raw allocation speed of arlloc exceeds its counterparts
+by 58–64% due to minimizing instructions in the critical path and the
+absence of indirect calls (vtable).*
 
-## Документация
+## Docs
 
-Полная справка по C API (Doxygen) и Rust-обертке (rustdoc) доступна по ссылке:
+Full reference documentation for the C API (Doxygen) and the Rust wrapper (rustdoc) is available at the link:
 
 [https://max-jenever.github.io/arlloc/](https://max-jenever.github.io/arlloc/)
 
-## Лицензия
+## License
 
-Проект распространяется на условиях двойной лицензии: **MIT** или **Apache-2.0**.  
-Подробности см. в файлах `LICENSE-MIT` и `LICENSE-APACHE` в корневой директории репозитория.
+The project is distributed under a dual license:
+MIT or Apache-2.0
+Details are provided in the LICENSE-MIT and LICENSE-APACHE
+files in the repository root directory.
