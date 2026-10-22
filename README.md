@@ -12,6 +12,25 @@ is implemented in C (C11 standard) and transparently compiled via build.rs
 using the cc crate. The Rust wrapper encapsulates the unsafe FFI calls,
 ensuring correct lifetime management and automatic resource release (Drop).
 
+## Installation
+
+*Run the following command in the root directory of your Rust project*
+
+```bash
+
+cargo add arlloc
+
+```
+
+*Or*
+
+*Manually add the dependency to the [dependencies] section in the Cargo.toml file*
+
+```toml
+[dependencies]
+arlloc = "0.1.1"
+```
+
 ## Build and testing
 
 A C compiler (GCC/Clang) and an up-to-date Rust toolchain are required.
