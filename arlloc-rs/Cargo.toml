@@ -1,6 +1,6 @@
 [package]
 name = "arlloc"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 description = "High-performance bump allocator with C core and safe Rust wrapper. O(1) allocation without fragmentation, locks, or syscalls in the hot path."
 license = "MIT OR Apache-2.0"
